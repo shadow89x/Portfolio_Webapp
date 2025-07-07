@@ -1,0 +1,328 @@
+/* ========================================
+   Theme Toggle Component
+   ======================================== */
+
+/*
+   Why dedicated theme toggle styles?
+   - Smooth icon transitions
+   - Consistent button styling
+   - Accessibility requirements
+   - State management
+   
+   Design principles:
+   - Clear visual feedback
+   - Smooth animations
+   - Accessible interactions
+   - Consistent with design system
+*/
+
+/* ========================================
+   Theme Toggle Button
+   ======================================== */
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-primary);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus {
+  outline: none;
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   Theme Icons
+   ======================================== */
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  transition: all var(--transition-base);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.theme-icon-light {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.theme-icon-dark {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* ========================================
+   Dark Theme States
+   ======================================== */
+
+[data-theme="dark"] .theme-icon-light {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+[data-theme="dark"] .theme-icon-dark {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* ========================================
+   System Theme Detection
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] .theme-icon-light {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  
+  [data-theme="system"] .theme-icon-dark {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] .theme-icon-light {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  
+  [data-theme="system"] .theme-icon-dark {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+/* ========================================
+   Loading State
+   ======================================== */
+
+.theme-toggle.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.theme-toggle.loading .theme-icon {
+  animation: themePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes themePulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* ========================================
+   Ripple Effect
+   ======================================== */
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: var(--color-primary-200);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease-out, height 0.3s ease-out;
+  opacity: 0;
+}
+
+.theme-toggle:active::before {
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+/* ========================================
+   Tooltip
+   ======================================== */
+
+.theme-toggle {
+  position: relative;
+}
+
+.theme-toggle::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-surface-elevated);
+  color: var(--color-text-primary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  z-index: var(--z-tooltip);
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-bottom-color: var(--color-surface-elevated);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+  z-index: var(--z-tooltip);
+}
+
+.theme-toggle:hover::after,
+.theme-toggle:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .theme-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .theme-toggle::after {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-2);
+    bottom: -35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .theme-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .theme-toggle::after {
+    display: none;
+  }
+  
+  .theme-toggle::before {
+    display: none;
+  }
+}
+
+/* ========================================
+   High Contrast Mode
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  .theme-toggle {
+    border: 2px solid var(--color-border);
+  }
+  
+  .theme-toggle:hover {
+    border-color: var(--color-primary-600);
+  }
+  
+  .theme-toggle:focus {
+    border-color: var(--color-primary-600);
+    box-shadow: 0 0 0 3px var(--color-primary-200);
+  }
+  
+  .theme-toggle::after {
+    border: 2px solid var(--color-border);
+  }
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-icon,
+  .theme-toggle::after,
+  .theme-toggle::before {
+    transition: none;
+    animation: none;
+  }
+  
+  .theme-toggle:hover {
+    transform: none;
+  }
+  
+  .theme-toggle:active {
+    transform: none;
+  }
+  
+  .theme-toggle.loading .theme-icon {
+    animation: none;
+  }
+}
+
+/* ========================================
+   Focus Visible
+   ======================================== */
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+  .theme-toggle {
+    display: none;
+  }
+} 

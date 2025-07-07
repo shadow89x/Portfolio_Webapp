@@ -1,0 +1,617 @@
+/* ========================================
+   Filter Component Styles
+   ======================================== */
+
+/*
+   Why dedicated filter styles?
+   - Complex interactive states
+   - Consistent form styling
+   - Accessibility requirements
+   - Responsive behavior
+   
+   Design principles:
+   - Clear visual hierarchy
+   - Intuitive interaction patterns
+   - Consistent with design system
+   - Accessible form controls
+*/
+
+/* ========================================
+   Filter Container
+   ======================================== */
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.filter-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.filter-label::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-primary-500);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   Search Input
+   ======================================== */
+
+.search-container {
+  position: relative;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--space-3);
+  color: var(--color-text-tertiary);
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.search-input:focus + .search-icon {
+  color: var(--color-primary-600);
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-10);
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  transition: all var(--transition-base);
+  font-family: inherit;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+  background-color: var(--color-surface);
+}
+
+.search-input::placeholder {
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.search-input:focus::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.search-help {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: var(--space-1) 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.search-help::before {
+  content: '💡';
+  font-size: 12px;
+}
+
+/* ========================================
+   Select Dropdowns
+   ======================================== */
+
+.filter-select,
+.sort-select {
+  padding: var(--space-3);
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: inherit;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--space-2) center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: var(--space-10);
+}
+
+.filter-select:focus,
+.sort-select:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+  background-color: var(--color-surface);
+}
+
+.filter-select:hover,
+.sort-select:hover {
+  border-color: var(--color-border-hover);
+  background-color: var(--color-surface);
+}
+
+.filter-select option,
+.sort-select option {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: var(--space-2);
+}
+
+.filter-help,
+.sort-help {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: var(--space-1) 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.filter-help::before {
+  content: '📂';
+  font-size: 12px;
+}
+
+.sort-help::before {
+  content: '↕️';
+  font-size: 12px;
+}
+
+/* ========================================
+   Active Filters
+   ======================================== */
+
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  min-height: 32px;
+  align-items: center;
+}
+
+.active-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-primary-200);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+  animation: filterIn 0.2s ease-out;
+}
+
+@keyframes filterIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.active-filter:hover {
+  background-color: var(--color-primary-100);
+  border-color: var(--color-primary-300);
+}
+
+.active-filter-remove {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.active-filter-remove:hover {
+  background-color: var(--color-primary-200);
+  color: var(--color-primary-800);
+}
+
+.active-filter-remove:focus {
+  outline: none;
+  background-color: var(--color-primary-200);
+  color: var(--color-primary-800);
+  box-shadow: 0 0 0 2px var(--color-primary-300);
+}
+
+.active-filter-remove::before {
+  content: '×';
+  font-weight: bold;
+}
+
+/* ========================================
+   Filter Actions
+   ======================================== */
+
+.filter-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.filter-action {
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-surface-elevated);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.filter-action:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
+  color: var(--color-text-primary);
+}
+
+.filter-action:focus {
+  outline: none;
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-300);
+  color: var(--color-primary-700);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+.filter-action-clear {
+  background-color: var(--color-error-50);
+  color: var(--color-error-700);
+  border-color: var(--color-error-200);
+}
+
+.filter-action-clear:hover {
+  background-color: var(--color-error-100);
+  border-color: var(--color-error-300);
+  color: var(--color-error-800);
+}
+
+.filter-action-clear:focus {
+  background-color: var(--color-error-100);
+  border-color: var(--color-error-400);
+  color: var(--color-error-800);
+  box-shadow: 0 0 0 2px var(--color-error-200);
+}
+
+/* ========================================
+   Filter Results
+   ======================================== */
+
+.filter-results {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.filter-results-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.filter-results-count {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.filter-results-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* ========================================
+   Filter Groups
+   ======================================== */
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.filter-group-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.filter-group-title::before {
+  content: '';
+  width: 3px;
+  height: 16px;
+  background-color: var(--color-primary-500);
+  border-radius: var(--radius-sm);
+}
+
+.filter-group-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ========================================
+   Checkbox Filters
+   ======================================== */
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.filter-checkbox:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.filter-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary-600);
+  cursor: pointer;
+}
+
+.filter-checkbox input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+.filter-checkbox-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-checkbox input[type="checkbox"]:checked + .filter-checkbox-label {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ========================================
+   Range Filters
+   ======================================== */
+
+.filter-range {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.filter-range-inputs {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.filter-range-input {
+  flex: 1;
+  padding: var(--space-2);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.filter-range-input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+.filter-range-separator {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .filter-container {
+    gap: var(--space-3);
+  }
+  
+  .search-input,
+  .filter-select,
+  .sort-select {
+    font-size: var(--font-size-base);
+    padding: var(--space-3);
+  }
+  
+  .search-input {
+    padding-left: var(--space-10);
+  }
+  
+  .filter-select,
+  .sort-select {
+    padding-right: var(--space-10);
+  }
+  
+  .active-filters {
+    gap: var(--space-1);
+  }
+  
+  .active-filter {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-2);
+  }
+  
+  .filter-actions {
+    flex-direction: column;
+  }
+  
+  .filter-action {
+    justify-content: center;
+  }
+  
+  .filter-results {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+  
+  .filter-results-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input,
+  .filter-select,
+  .sort-select {
+    padding: var(--space-2) var(--space-3);
+  }
+  
+  .search-input {
+    padding-left: var(--space-8);
+  }
+  
+  .filter-select,
+  .sort-select {
+    padding-right: var(--space-8);
+  }
+  
+  .search-icon {
+    left: var(--space-2);
+  }
+  
+  .active-filter {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-2);
+  }
+  
+  .active-filter-remove {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ========================================
+   Accessibility Enhancements
+   ======================================== */
+
+/* Focus visible for keyboard navigation */
+.search-input:focus-visible,
+.filter-select:focus-visible,
+.sort-select:focus-visible,
+.filter-action:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .search-input,
+  .filter-select,
+  .sort-select {
+    border: 2px solid var(--color-border);
+  }
+  
+  .search-input:focus,
+  .filter-select:focus,
+  .sort-select:focus {
+    border-color: var(--color-primary-600);
+  }
+  
+  .active-filter {
+    border: 2px solid var(--color-primary-600);
+  }
+  
+  .filter-action {
+    border: 2px solid var(--color-border);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .search-input,
+  .filter-select,
+  .sort-select,
+  .active-filter,
+  .filter-action {
+    transition: none;
+  }
+  
+  .active-filter {
+    animation: none;
+  }
+} 

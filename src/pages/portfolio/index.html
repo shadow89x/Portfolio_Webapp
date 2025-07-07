@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio projects showcasing web development, data analysis, and technical skills">
+    <meta name="keywords" content="portfolio, projects, web development, data analysis, github">
+    <meta name="author" content="Your Name">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/portfolio">
+    <meta property="og:title" content="Portfolio Projects - Web Developer & Data Analyst">
+    <meta property="og:description" content="Explore my portfolio of web development and data analysis projects">
+    <meta property="og:image" content="https://your-domain.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/portfolio">
+    <meta property="twitter:title" content="Portfolio Projects - Web Developer & Data Analyst">
+    <meta property="twitter:description" content="Explore my portfolio of web development and data analysis projects">
+    <meta property="twitter:image" content="https://your-domain.com/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/styles/base/reset.css" as="style">
+    <link rel="preload" href="/src/styles/base/variables.css" as="style">
+    <link rel="preload" href="/src/styles/base/typography.css" as="style">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/styles/base/reset.css">
+    <link rel="stylesheet" href="/src/styles/base/variables.css">
+    <link rel="stylesheet" href="/src/styles/base/typography.css">
+    <link rel="stylesheet" href="/src/styles/base/layout.css">
+    <link rel="stylesheet" href="/src/styles/components/navigation.css">
+    <link rel="stylesheet" href="/src/styles/components/theme-toggle.css">
+    <link rel="stylesheet" href="/src/styles/components/filter.css">
+    <link rel="stylesheet" href="/src/styles/components/project-card.css">
+    <link rel="stylesheet" href="/src/styles/pages/portfolio.css">
+    
+    <title>Portfolio Projects - Web Developer & Data Analyst</title>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="navigation" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link" aria-label="Home">
+                        <span class="brand-text">Portfolio</span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="/" class="nav-link" role="menuitem">Home</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/portfolio" class="nav-link" role="menuitem" aria-current="page">Portfolio</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/contact" class="nav-link" role="menuitem">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="nav-controls">
+                    <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+                        <svg class="theme-icon theme-icon-light" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" type="button" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" role="main">
+        <!-- Portfolio Header -->
+        <section class="portfolio-header" aria-labelledby="portfolio-title">
+            <div class="container">
+                <div class="portfolio-header-content">
+                    <h1 id="portfolio-title" class="portfolio-title">My Projects</h1>
+                    <p class="portfolio-subtitle">
+                        Explore my collection of web development, data analysis, and technical projects
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter and Search Section -->
+        <section class="portfolio-filters" aria-labelledby="filters-title">
+            <div class="container">
+                <div class="filters-container">
+                    <div class="search-container">
+                        <label for="project-search" class="search-label">Search Projects</label>
+                        <div class="search-input-wrapper">
+                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                            <input 
+                                type="search" 
+                                id="project-search" 
+                                class="search-input" 
+                                placeholder="Search by project name, technology, or description..."
+                                aria-describedby="search-help"
+                            >
+                        </div>
+                        <div id="search-help" class="search-help">
+                            Type to search through project names, technologies, and descriptions
+                        </div>
+                    </div>
+
+                    <div class="filter-container">
+                        <label for="category-filter" class="filter-label">Filter by Category</label>
+                        <select id="category-filter" class="filter-select" aria-describedby="filter-help">
+                            <option value="">All Categories</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="data-analysis">Data Analysis</option>
+                            <option value="machine-learning">Machine Learning</option>
+                            <option value="mobile-app">Mobile App</option>
+                            <option value="api-development">API Development</option>
+                            <option value="database">Database</option>
+                        </select>
+                        <div id="filter-help" class="filter-help">
+                            Select a category to filter projects
+                        </div>
+                    </div>
+
+                    <div class="sort-container">
+                        <label for="sort-select" class="sort-label">Sort by</label>
+                        <select id="sort-select" class="sort-select" aria-describedby="sort-help">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                            <option value="name-asc">Name A-Z</option>
+                            <option value="name-desc">Name Z-A</option>
+                            <option value="stars-desc">Most Stars</option>
+                        </select>
+                        <div id="sort-help" class="sort-help">
+                            Choose how to sort the projects
+                        </div>
+                    </div>
+                </div>
+
+                <div class="active-filters" id="active-filters" aria-live="polite">
+                    <!-- Active filters will be displayed here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-section" aria-labelledby="projects-title">
+            <div class="container">
+                <div class="projects-header">
+                    <h2 id="projects-title" class="projects-title">Projects</h2>
+                    <div class="projects-count" id="projects-count" aria-live="polite">
+                        Showing <span id="visible-count">0</span> of <span id="total-count">0</span> projects
+                    </div>
+                </div>
+
+                <div class="projects-grid" id="projects-grid" role="list">
+                    <!-- Project cards will be dynamically generated here -->
+                </div>
+
+                <div class="projects-empty" id="projects-empty" hidden>
+                    <div class="empty-state">
+                        <svg class="empty-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12h8"/>
+                            <path d="M12 8v8"/>
+                        </svg>
+                        <h3 class="empty-title">No projects found</h3>
+                        <p class="empty-description">
+                            Try adjusting your search or filter criteria to find more projects.
+                        </p>
+                        <button class="btn btn-primary" onclick="clearFilters()">
+                            Clear All Filters
+                        </button>
+                    </div>
+                </div>
+
+                <div class="projects-loading" id="projects-loading">
+                    <div class="loading-spinner">
+                        <svg class="spinner" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" stroke-dasharray="31.416" stroke-dashoffset="31.416"/>
+                        </svg>
+                        <span class="loading-text">Loading projects...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Integration Section -->
+        <section class="github-section" aria-labelledby="github-title">
+            <div class="container">
+                <div class="github-content">
+                    <h2 id="github-title" class="github-title">GitHub Integration</h2>
+                    <p class="github-description">
+                        Connect your GitHub account to automatically sync your repositories and showcase your latest work.
+                    </p>
+                    <div class="github-features">
+                        <div class="feature-item">
+                            <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                            <span>Auto-sync repositories</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                            <span>Real-time updates</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                            <span>Project analytics</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="github-connect">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Connect GitHub
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Connect</h3>
+                    <ul class="social-links">
+                        <li><a href="https://github.com/yourusername" aria-label="GitHub">GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn">LinkedIn</a></li>
+                        <li><a href="mailto:your.email@example.com" aria-label="Email">Email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-text">
+                        © 2024 Your Name. Built with ❤️ using HTML, CSS, and JavaScript.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal" id="project-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="modal-title" class="modal-title"></h2>
+                <button class="modal-close" id="modal-close" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-content" id="modal-content">
+                <!-- Modal content will be dynamically generated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/portfolio.js"></script>
+</body>
+</html> 

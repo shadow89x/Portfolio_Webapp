@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio website showcasing web development, data analysis, and technical projects">
+    <meta name="keywords" content="portfolio, web development, data analysis, javascript, html, css">
+    <meta name="author" content="Your Name">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:title" content="Personal Portfolio - Web Developer & Data Analyst">
+    <meta property="og:description" content="Professional portfolio showcasing web development and data analysis projects">
+    <meta property="og:image" content="https://your-domain.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/">
+    <meta property="twitter:title" content="Personal Portfolio - Web Developer & Data Analyst">
+    <meta property="twitter:description" content="Professional portfolio showcasing web development and data analysis projects">
+    <meta property="twitter:image" content="https://your-domain.com/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/styles/base/reset.css" as="style">
+    <link rel="preload" href="/src/styles/base/variables.css" as="style">
+    <link rel="preload" href="/src/styles/base/typography.css" as="style">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/styles/base/reset.css">
+    <link rel="stylesheet" href="/src/styles/base/variables.css">
+    <link rel="stylesheet" href="/src/styles/base/typography.css">
+    <link rel="stylesheet" href="/src/styles/base/layout.css">
+    <link rel="stylesheet" href="/src/styles/components/navigation.css">
+    <link rel="stylesheet" href="/src/styles/components/theme-toggle.css">
+    <link rel="stylesheet" href="/src/styles/pages/home.css">
+    
+    <title>Personal Portfolio - Web Developer & Data Analyst</title>
+</head>
+<body>
+    <!-- Fixed Sidebar -->
+    <nav class="fixed-sidebar">
+      <ul class="sidebar-links">
+        <li><a href="/index.html" class="sidebar-link">Main</a></li>
+        <li><a href="/sample/index.html" class="sidebar-link">Sample Home</a></li>
+        <li><a href="/sample/contact.html" class="sidebar-link">Sample Contact</a></li>
+        <li><a href="/sample/elements.html" class="sidebar-link">Sample Elements</a></li>
+        <li><a href="/sample/generic.html" class="sidebar-link">Sample Generic</a></li>
+        <li><a href="/src/pages/portfolio/index.html" class="sidebar-link">Portfolio</a></li>
+        <li><a href="/src/pages/dashboard/index.html" class="sidebar-link">Dashboard</a></li>
+        <li><a href="/src/pages/contact/index.html" class="sidebar-link">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Neon EXP Bar (고정) -->
+    <div id="exp-bar-fixed" class="neon-exp-bar-fixed">
+      <div class="exp-bar-content">
+        <span class="exp-level">Lv. <span id="exp-level">27</span></span>
+        <div class="exp-bar-outer">
+          <div class="exp-bar-inner" id="exp-bar-inner" style="width:40%"></div>
+        </div>
+        <span class="exp-value"><span id="exp-now">400</span> / <span id="exp-max">1000</span> EXP</span>
+      </div>
+    </div>
+    <!-- EXP 획득 애니메이션 표시용 -->
+    <div id="exp-float-container"></div>
+    
+    <!-- Neon Gamer HUD -->
+    <header class="neon-hud">
+      <div class="hud-info">
+        <!-- 모든 텍스트(닉네임, 레벨, HP, MP, EXP) 제거 -->
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content neon-main" role="main">
+        <!-- Neon Hero Section -->
+        <section class="neon-hero-row">
+          <div class="outer-neon-border">
+            <div class="main-neon-layout" style="margin-top: 60px;">
+              <div class="profile-info-panel">
+                <div class="profile-photo-wrap">
+                  <img src="sample/images/KakaoTalk_20220610_132225838.jpg" alt="Sanghoon Pai" class="profile-photo">
+                </div>
+                <div class="profile-info-texts">
+                  <div class="profile-name">Sanghoon Pai</div>
+                  <div class="profile-job">Data Analyst</div>
+                  <div class="profile-level">Lv. 27</div>
+                  <div class="profile-bars">
+                    <div class="profile-bar-wrap"><span>HP</span><div class="profile-bar profile-bar-hp"><div class="profile-bar-fill" style="width:90%"></div></div></div>
+                    <div class="profile-bar-wrap"><span>MP</span><div class="profile-bar profile-bar-mp"><div class="profile-bar-fill" style="width:60%"></div></div></div>
+                    <div class="profile-bar-wrap"><span>EXP</span><div class="profile-bar profile-bar-exp"><div class="profile-bar-fill" style="width:40%"></div></div></div>
+                  </div>
+                  <div class="profile-stats">
+                    <div class="profile-stat"><span>STR</span> 8</div>
+                    <div class="profile-stat"><span>DEX</span> 7</div>
+                    <div class="profile-stat"><span>INT</span> 10</div>
+                    <div class="profile-stat"><span>CHA</span> 9</div>
+                  </div>
+                </div>
+                <div class="profile-contact-box">
+                  <div class="contact-neon-title">Contact</div>
+                  <div class="contact-neon-info">Shadow89xxx@gmail.com</div>
+                  <div class="contact-neon-info">(916)-662-2393</div>
+                  <div class="contact-neon-info">Rowland Heights, CA</div>
+                  <div class="contact-neon-info">www.linkedin.com/in/sanghoon-pai-437a63164/</div>
+                  <div class="contact-neon-info">https://github.com/shadow89x/</div>
+                </div>
+                <div class="skills-title-spacer"></div>
+              </div>
+              <div class="skills-panel">
+                <div class="skills-neon-title">Skills</div>
+                <div class="neon-skill-grid">
+                  <!-- Python Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/python.jpg" alt="Python Character"></div>
+                    <div class="skill-name">Python</div>
+                  </div>
+                  <!-- SQL Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/sql.jpg" alt="SQL Character"></div>
+                    <div class="skill-name">SQL</div>
+                  </div>
+                  <!-- PowerBI Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/powerbi.jpg" alt="PowerBI Character"></div>
+                    <div class="skill-name">PowerBI</div>
+                  </div>
+                  <!-- Excel Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/excel.jpg" alt="Excel Character"></div>
+                    <div class="skill-name">Excel</div>
+                  </div>
+                  <!-- PowerPoint Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/powerpoint.jpg" alt="PowerPoint Character"></div>
+                    <div class="skill-name">PowerPoint</div>
+                  </div>
+                  <!-- HTML/CSS Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/html-css.jpg" alt="HTML CSS Character"></div>
+                    <div class="skill-name">HTML/CSS</div>
+                  </div>
+                  <!-- JavaScript Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/javascript.jpg" alt="JavaScript Character"></div>
+                    <div class="skill-name">JavaScript</div>
+                  </div>
+                  <!-- Git/GitHub Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/git.jpg" alt="Git Character"></div>
+                    <div class="skill-name">Git/GitHub</div>
+                  </div>
+                  <!-- QuickBooks Card -->
+                  <div class="neon-card skill-card">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/quickbooks.jpg" alt="QuickBooks Character"></div>
+                    <div class="skill-name">QuickBooks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="neon-section neon-projects">
+            <h2 class="neon-title">Quests (Projects)</h2>
+            <div class="neon-project-grid">
+                <a href="https://github.com/shadow89x/Portfolio/blob/master/OpenAI_DallE2_background_Image_creation.ipynb" class="neon-card project-card" target="_blank" data-exp="120" data-gold="50">
+                  <div class="project-title">OpenAI DALL-E2 Background Image Creation</div>
+                  <div class="project-desc">Remove background with Azure Computer Vision, then generate a new background with DALL-E2. A combination of AI creativity and practical application.</div>
+                  <div class="project-rewards"><span class="exp-reward">+120 EXP</span> | <span class="gold-reward">+50 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Portfolio/blob/master/KMeans_clustering_of_medical_documents.ipynb" class="neon-card project-card" target="_blank" data-exp="100" data-gold="40">
+                  <div class="project-title">KMeans clustering of medical documents</div>
+                  <div class="project-desc">Convert PDF, preprocess, extract text, find optimal clusters, and classify documents using KMeans.</div>
+                  <div class="project-rewards"><span class="exp-reward">+100 EXP</span> | <span class="gold-reward">+40 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Portfolio" class="neon-card project-card" target="_blank" data-exp="80" data-gold="30">
+                  <div class="project-title">Vectorized Image Search with Azure Computer Vision Embeddings</div>
+                  <div class="project-desc">Image similarity search and combined text+image search using Azure Computer Vision embeddings.</div>
+                  <div class="project-rewards"><span class="exp-reward">+80 EXP</span> | <span class="gold-reward">+30 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Portfolio" class="neon-card project-card" target="_blank" data-exp="90" data-gold="35">
+                  <div class="project-title">(Data Analysis) Amazon Review Analysis</div>
+                  <div class="project-desc">Analyze Amazon review data, extract patterns using NLP and visualization.</div>
+                  <div class="project-rewards"><span class="exp-reward">+90 EXP</span> | <span class="gold-reward">+35 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Portfolio" class="neon-card project-card" target="_blank" data-exp="70" data-gold="25">
+                  <div class="project-title">Microsoft-Azure-Resource-Compendium</div>
+                  <div class="project-desc">A comprehensive resource guide for working with Microsoft Azure.</div>
+                  <div class="project-rewards"><span class="exp-reward">+70 EXP</span> | <span class="gold-reward">+25 Gold</span></div>
+                </a>
+            </div>
+            <div class="projects-cta">
+                <a href="https://github.com/shadow89x/Portfolio" class="btn btn-primary" target="_blank">View All Projects on GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Connect</h3>
+                    <ul class="social-links">
+                        <li><a href="https://github.com/yourusername" aria-label="GitHub">GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn">LinkedIn</a></li>
+                        <li><a href="mailto:your.email@example.com" aria-label="Email">Email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-text">
+                        © 2024 Your Name. Built with ❤️ using HTML, CSS, and JavaScript.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html> 
