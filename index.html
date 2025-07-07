@@ -28,7 +28,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <title>Personal Portfolio - Web Developer & Data Analyst</title>
 
@@ -102,6 +102,7 @@
             --font-family-sans: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
             --font-family-display: 'Poppins', 'Inter', sans-serif;
+            --font-family-orbitron: 'Orbitron', 'Poppins', sans-serif;
             
             --font-size-xs: 0.75rem;
             --font-size-sm: 0.875rem;
@@ -399,215 +400,247 @@
         }
 
         .outer-neon-border {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 3px;
-            border-radius: 20px;
-            box-shadow: 
-                0 0 30px rgba(102, 126, 234, 0.6),
-                0 0 60px rgba(102, 126, 234, 0.3),
-                0 0 90px rgba(102, 126, 234, 0.1);
-            max-width: 1400px;
-            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            background: transparent !important;
+            margin: 0 auto;
+            width: 1100px;
+            max-width: 95vw;
+            display: block;
+            margin-top: 60px;
+            padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+            border-radius: 2.8rem;
         }
 
         .main-neon-layout {
-            background: var(--color-background);
-            border-radius: 17px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: start;
+            width: 1100px;
+            max-width: 95vw;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            gap: 2.8rem;
         }
 
         /* Profile Info Panel */
         .profile-info-panel {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 
-                0 0 20px rgba(102, 126, 234, 0.4),
-                0 0 40px rgba(102, 126, 234, 0.2);
+            flex: 1 1 0;
+            height: 100%;
+            min-height: 670px;
+            max-width: 340px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            justify-content: flex-start;
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border-radius: 2.2rem 1.2rem 2.2rem 2.2rem;
+            border: 3px solid #00f2ff;
+            box-shadow: 0 0 32px #00f2ff88, 0 2px 16px #000b;
+            padding: 2.2rem 2.2rem 1.2rem 2.2rem;
+            margin-right: 2.5rem;
+            z-index: 2;
         }
 
         .profile-photo-wrap {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
         }
 
         .profile-photo {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 3px solid #667eea;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            border: 4px solid #00f2ff;
+            box-shadow: 0 0 24px #00f2ffcc, 0 0 0 8px #18181b, 0 0 0 12px #00f2ff44;
+            object-fit: cover;
+            background: #fff;
         }
 
         .profile-info-texts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            width: 100%;
+            align-items: center;
+        }
+
+        .profile-name, .profile-job, .profile-level {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            color: #00f2ff;
+            text-shadow: 0 0 6px #00f2ff, 0 0 1px #fff;
+            font-weight: 900;
+            letter-spacing: 0.04em;
             text-align: center;
         }
 
-        .profile-name {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .profile-job {
-            font-size: 16px;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
         .profile-level {
-            font-size: 18px;
-            color: #00ff88;
-            font-weight: bold;
-            margin-bottom: 15px;
+            color: #ffe066;
+            text-shadow: 0 0 3px #ffe066, 0 0 1px #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
         }
 
         .profile-bars {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 0.4rem;
+            margin: 0.7rem 0 0.5rem 0;
         }
 
         .profile-bar-wrap {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .profile-bar-wrap > span {
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            min-width: 30px;
+            gap: 0.7rem;
         }
 
         .profile-bar {
-            flex: 1;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
+            width: 120px;
+            height: 16px;
+            background: #181c2a;
+            border-radius: 10px;
+            box-shadow: 0 0 4px #00f2ff33, 0 0 0 1px #00f2ff22 inset;
             overflow: hidden;
+            position: relative;
         }
 
         .profile-bar-hp .profile-bar-fill {
-            background: linear-gradient(90deg, #ff4444, #ff6666);
+            background: linear-gradient(90deg, #ff3c3c 0%, #ffb300 100%);
+            box-shadow: 0 0 5px #ff3c3c66, 0 0 3px #ffb30066;
         }
 
         .profile-bar-mp .profile-bar-fill {
-            background: linear-gradient(90deg, #4444ff, #6666ff);
+            background: linear-gradient(90deg, #00c3ff 0%, #00f2ff 100%);
+            box-shadow: 0 0 5px #00c3ff66, 0 0 3px #00f2ff66;
         }
 
         .profile-bar-exp .profile-bar-fill {
-            background: linear-gradient(90deg, #00ff88, #00ccff);
+            background: linear-gradient(90deg, #ffe066 0%, #fffbe6 100%);
+            box-shadow: 0 0 5px #ffe06666, 0 0 3px #fffbe666;
         }
 
         .profile-bar-fill {
             height: 100%;
-            border-radius: 6px;
-            transition: width 0.3s ease;
+            border-radius: 10px 0 0 10px;
+            transition: width 0.6s cubic-bezier(.4,2,.6,1);
+        }
+
+        .profile-bar-wrap > span {
+            color: #fff;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #000;
+            margin-right: 0.5rem;
         }
 
         .profile-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 0.7rem;
         }
 
         .profile-stat {
-            background: rgba(102, 126, 234, 0.1);
-            padding: 8px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 12px;
+            font-size: 0.68rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            color: #fff;
+            background: linear-gradient(90deg, #00f2ff33 0%, #ff00e633 100%);
+            border-radius: 0.7rem;
+            padding: 0.3rem 1.1rem;
+            box-shadow: 0 0 3px #00f2ff33;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #fff;
+            font-weight: 700;
+            letter-spacing: 0.04em;
         }
 
         .profile-stat span {
-            color: #667eea;
+            color: #00f2ff;
             font-weight: bold;
             display: block;
             margin-bottom: 2px;
         }
 
         .profile-contact-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 15px;
+            width: 100%;
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 3px solid #00f2ff;
+            border-radius: 1.2rem 1.2rem 2.2rem 2.2rem;
+            box-shadow: 0 0 32px #00f2ff88, 0 2px 16px #000b;
+            padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+            margin-top: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .contact-neon-title {
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
+        .skills-neon-title, .contact-neon-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.08rem;
+            color: #00f2ff;
+            text-shadow: 0 0 6px #00f2ff, 0 0 1px #fff;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.5rem;
             text-align: center;
-            margin-bottom: 10px;
         }
 
         .contact-neon-info {
-            color: white;
-            font-size: 12px;
-            text-align: center;
-            margin-bottom: 5px;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.97rem;
+            color: #fff;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #000;
+            font-weight: 600;
+            letter-spacing: 0.02em;
             word-break: break-all;
+            text-align: center;
         }
 
         /* Skills Panel */
         .skills-panel {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 
-                0 0 20px rgba(102, 126, 234, 0.4),
-                0 0 40px rgba(102, 126, 234, 0.2);
+            flex: 1 1 0;
+            height: 100%;
+            min-width: 340px;
         }
 
-        .skills-neon-title {
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
+        .skills-title-spacer {
+            min-height: 2.2rem;
+            width: 100%;
         }
 
         .neon-skill-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 1.5rem;
         }
 
         .neon-card.skill-card {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
-            border-radius: 12px;
-            padding: 15px;
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            box-shadow: 0 0 16px #00f2ff44, 0 2px 8px #000b;
             cursor: pointer;
         }
 
         .neon-card.skill-card:hover {
             transform: translateY(-5px);
-            box-shadow: 
-                0 0 20px rgba(102, 126, 234, 0.6),
-                0 0 40px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
+            box-shadow: 0 0 24px #00f2ff66, 0 4px 16px #000b;
+            border-color: #00f2ff;
         }
 
         .skill-img-wrap {
             width: 60px;
             height: 60px;
-            margin: 0 auto 10px;
+            margin: 0 auto 1rem;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid #667eea;
+            border: 2px solid #00f2ff;
+            box-shadow: 0 0 12px #00f2ff44;
         }
 
         .skill-img-wrap img {
@@ -617,16 +650,19 @@
         }
 
         .skill-name {
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 8px;
+            color: #fff;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #000;
+            letter-spacing: 0.02em;
         }
 
         .skill-stars {
             display: flex;
             justify-content: center;
-            gap: 2px;
+            gap: 0.2rem;
         }
 
         .star-svg {
@@ -717,13 +753,31 @@
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .main-neon-layout {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .main-neon-layout, .outer-neon-border, .neon-section.neon-projects {
+                width: 100%;
+                max-width: 100vw;
             }
-            
-            .outer-neon-border {
-                max-width: 800px;
+        }
+
+        @media (max-width: 1100px) {
+            .main-neon-layout {
+                flex-direction: column;
+                align-items: center;
+                min-height: 900px;
+            }
+            .profile-info-panel {
+                margin-right: 0;
+                margin-bottom: 2.5rem;
+                min-width: 260px;
+                max-width: 400px;
+            }
+            .profile-contact-box {
+                border-radius: 1.2rem 1.2rem 2.2rem 2.2rem;
+            }
+            .skills-panel {
+                min-width: 260px;
+                max-width: 100vw;
+                border-radius: 1.2rem 1.2rem 2.2rem 2.2rem;
             }
         }
 
