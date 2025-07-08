@@ -1,0 +1,8 @@
+streamlit==1.3.0
+Pillow==8.4.0
+pandas==1.4.0
+azure-ai-vision==1.0.0b1
+azure-storage-blob==12.9.0
+numpy==1.22.2
+requests==2.27.1
+st-clickable-images==0.1.0

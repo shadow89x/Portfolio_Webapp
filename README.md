@@ -28,6 +28,7 @@ This is a comprehensive personal portfolio website designed to showcase web deve
 ### Current Features
 - **GitHub API Integration**: Real-time repository data and statistics
 - **PowerBI Dashboard**: Interactive analytics dashboard with data visualization
+- **Vector Search**: AI-powered image and text similarity search using Azure Computer Vision
 - **Responsive Design**: Mobile-first approach with modern CSS
 - **Theme System**: Dark/Light mode with automatic detection
 - **Contact Form**: Interactive form with validation and submission
@@ -114,6 +115,7 @@ optical_warehouse_web/
 - [x] Contact form functionality
 - [x] Performance optimization
 - [x] PowerBI Dashboard integration
+- [x] Vector Search integration with Azure Computer Vision
 
 ### Phase 5: Deployment & Polish (Days 18-20)
 - [ ] SEO optimization
@@ -121,10 +123,58 @@ optical_warehouse_web/
 - [ ] Cross-browser compatibility
 - [ ] Deployment configuration
 
+## 🔍 Vector Search Feature
+
+### Overview
+The Vector Search feature is an AI-powered similarity search system that allows users to find similar products using either text queries or image URLs. It leverages Azure Computer Vision's vectorization capabilities to create embeddings and perform cosine similarity searches.
+
+### Features
+- **Text Search**: Enter descriptive text (e.g., "robot", "car", "toy") to find similar products
+- **Image Search**: Provide image URLs to find visually similar products
+- **Real-time Results**: Instant search results with similarity scores
+- **Fallback Mode**: Works offline with sample data when API is unavailable
+
+### Technical Implementation
+- **Frontend**: Pure HTML/CSS/JavaScript with modern UI design
+- **Backend**: Flask API with CORS support
+- **AI Service**: Azure Computer Vision API for vectorization
+- **Similarity Algorithm**: Cosine similarity for vector comparison
+
+### Setup Instructions
+1. **Install Python dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configure Azure credentials** (optional):
+   Create a `.env` file with your Azure Computer Vision credentials:
+   ```
+   AZURE_ENDPOINT=https://your-resource-name.cognitiveservices.azure.com
+   AZURE_API_KEY=your-azure-api-key-here
+   ```
+
+3. **Start the API server**:
+   ```bash
+   python vector_search_api.py
+   ```
+
+4. **Access the feature**:
+   Navigate to the Vector Search page via the sidebar link
+
+### API Endpoints
+- `POST /api/search`: Perform vector search with query and type
+- `GET /api/health`: Health check endpoint
+
+### Security Notes
+- Azure credentials are stored in `.env` file (not committed to Git)
+- API includes error handling and fallback mechanisms
+- CORS is enabled for local development
+
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js (v16 or higher)
+- Python 3.8+ (for Vector Search API)
 - Git
 - Modern web browser
 

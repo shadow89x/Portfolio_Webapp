@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Search - Sanghoon Pai's Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --color-background: #0a0a0a;
+            --color-surface: #1a1a1a;
+            --color-surface-elevated: #2a2a2a;
+            --color-surface-hover: #3a3a3a;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #cccccc;
+            --color-text-tertiary: #999999;
+            --color-border: #333333;
+            --color-border-focus: #3b82f6;
+            --color-shadow: rgba(0, 0, 0, 0.3);
+            --color-shadow-elevated: rgba(0, 0, 0, 0.4);
+            --font-family-sans: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-family-orbitron: 'Orbitron', 'Poppins', sans-serif;
+        }
+
+        /* Reset and Base Styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family-sans);
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background: radial-gradient(ellipse at 50% 0%, #2a003f 0%, #18181b 60%, #0a0a1a 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Fixed Sidebar */
+        .fixed-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 0 15px 15px 0;
+            box-shadow: 
+                0 0 20px rgba(102, 126, 234, 0.6),
+                0 0 40px rgba(102, 126, 234, 0.3),
+                0 0 60px rgba(102, 126, 234, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar-link {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            text-shadow: 0 0 4px #00f2ff, 0 0 1px #fff;
+            white-space: nowrap;
+        }
+
+        .sidebar-link:hover, .sidebar-link:focus {
+            background: linear-gradient(90deg, #00f2ff44 0%, #ff00e644 100%);
+            color: #00f2ff;
+            box-shadow: 0 0 16px #00f2ffcc, 0 2px 8px #ff00e6cc;
+        }
+
+        .sidebar-link.active {
+            background: linear-gradient(90deg, #00f2ff44 0%, #ff00e644 100%);
+            color: #00f2ff;
+            box-shadow: 0 0 16px #00f2ffcc, 0 2px 8px #ff00e6cc;
+        }
+
+        /* Neon EXP Bar Fixed */
+        .neon-exp-bar-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 1000;
+            background: rgba(10,10,20,0.85);
+            box-shadow: 0 2px 24px #00f2ff44, 0 0 0 2px #00f2ff55 inset;
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
+        }
+
+        .exp-bar-content {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+        }
+
+        .exp-level {
+            color: #00f2ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px #00f2ff, 0 0 2px #fff;
+        }
+
+        .exp-bar-outer {
+            width: 240px;
+            height: 18px;
+            background: #181c2a;
+            border-radius: 12px;
+            box-shadow: 0 0 12px #00f2ff55, 0 0 0 2px #00f2ff44 inset;
+            overflow: hidden;
+            margin: 0 0.5rem;
+        }
+
+        .exp-bar-inner {
+            height: 100%;
+            background: linear-gradient(90deg, #00f2ff 0%, #00ffb3 100%);
+            box-shadow: 0 0 16px #00f2ffcc, 0 0 8px #00ffb3cc;
+            border-radius: 12px 0 0 12px;
+            transition: width 0.6s cubic-bezier(.4,2,.6,1);
+        }
+
+        .exp-value {
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 0 6px #00f2ff, 0 0 2px #fff;
+        }
+
+        .stats-display {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            color: #00ffb3;
+            text-shadow: 0 0 4px #00ffb3, 0 0 1px #fff;
+            font-weight: 600;
+        }
+
+        /* Main Layout */
+        .main-content {
+            margin-left: 140px;
+            padding-top: 80px;
+            min-height: 100vh;
+            background: var(--color-background);
+        }
+
+        /* Vector Search Container */
+        .vector-search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .vector-search-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00f2ff;
+            text-shadow: 0 0 20px #00f2ff, 0 0 5px #fff;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .vector-search-subtitle {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: #00ffb3;
+            text-shadow: 0 0 10px #00ffb3, 0 0 2px #fff;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .search-input-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .search-input {
+            width: 60%;
+            padding: 1.5rem 2rem;
+            font-size: 1.6rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 1rem;
+            color: #fff;
+            text-shadow: 0 0 4px #00f2ff;
+            box-shadow: 0 0 20px #00f2ff44;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #00ffb3;
+            box-shadow: 0 0 30px #00ffb344;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+            text-shadow: none;
+        }
+
+        .search-button {
+            margin-left: 1rem;
+            padding: 1.5rem 2rem;
+            font-size: 1.6rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00f2ff 0%, #00ffb3 100%);
+            border: none;
+            border-radius: 1rem;
+            color: #000;
+            cursor: pointer;
+            box-shadow: 0 0 20px #00f2ff44;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px #00f2ff66;
+        }
+
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #00ffb3;
+            box-shadow: 0 0 30px #00f2ff44;
+        }
+
+        .result-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #00f2ff44;
+        }
+
+        .result-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00f2ff;
+            text-shadow: 0 0 8px #00f2ff;
+            margin-bottom: 1rem;
+        }
+
+        .result-similarity {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #00ffb3;
+            text-shadow: 0 0 6px #00ffb3;
+        }
+
+        .loading {
+            text-align: center;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: #00f2ff;
+            text-shadow: 0 0 10px #00f2ff;
+            margin: 3rem 0;
+        }
+
+        .error-message {
+            text-align: center;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            color: #ff6b6b;
+            text-shadow: 0 0 10px #ff6b6b;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .fixed-sidebar {
+                width: 80px;
+            }
+            
+            .main-content {
+                margin-left: 100px;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .search-button {
+                margin-left: 0;
+                margin-top: 1rem;
+                width: 100%;
+            }
+            
+            .vector-search-title {
+                font-size: 2.2rem;
+            }
+            
+            .vector-search-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* EXP Float Animation */
+        #exp-float-container {
+            position: fixed;
+            top: 56px;
+            right: 32px;
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .exp-float {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #00ffb3;
+            text-shadow: 0 0 12px #00f2ff, 0 0 2px #fff;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(0);
+            animation: exp-float-anim 1.2s cubic-bezier(.4,2,.6,1) forwards;
+        }
+
+        @keyframes exp-float-anim {
+            0% { opacity: 0; transform: translateY(0) scale(0.8); }
+            10% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+            60% { opacity: 1; transform: translateY(-32px) scale(1); }
+            100% { opacity: 0; transform: translateY(-48px) scale(0.9); }
+        }
+    </style>
+</head>
+<body>
+    <!-- EXP Bar -->
+    <div id="exp-bar-fixed" class="neon-exp-bar-fixed">
+        <div class="exp-bar-content">
+            <span class="exp-level">Lv. <span id="exp-level">1</span></span>
+            <div class="exp-bar-outer">
+                <div class="exp-bar-inner" id="exp-bar-inner" style="width:0%"></div>
+            </div>
+            <span class="exp-value"><span id="exp-now">0</span> / <span id="exp-max">100</span> EXP</span>
+            <div class="stats-display">
+                <span class="stat-item">HP: <span id="stat-hp">100</span></span>
+                <span class="stat-item">MP: <span id="stat-mp">50</span></span>
+                <span class="stat-item">STR: <span id="stat-str">10</span></span>
+                <span class="stat-item">DEX: <span id="stat-dex">8</span></span>
+                <span class="stat-item">INT: <span id="stat-int">12</span></span>
+                <span class="stat-item">CHA: <span id="stat-cha">9</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXP Float Container -->
+    <div id="exp-float-container"></div>
+
+    <!-- Fixed Sidebar -->
+    <nav class="fixed-sidebar">
+      <ul class="sidebar-links">
+        <li><a href="/index.html" class="sidebar-link">Main</a></li>
+        <li><a href="/vector_search.html" class="sidebar-link active">Vector Search</a></li>
+        <li><a href="/sample/index.html" class="sidebar-link">Sample Home</a></li>
+        <li><a href="/sample/contact.html" class="sidebar-link">Sample Contact</a></li>
+        <li><a href="/sample/elements.html" class="sidebar-link">Sample Elements</a></li>
+        <li><a href="/sample/generic.html" class="sidebar-link">Sample Generic</a></li>
+        <li><a href="/src/pages/portfolio/index.html" class="sidebar-link">Portfolio</a></li>
+        <li><a href="/src/pages/dashboard/index.html" class="sidebar-link">Dashboard</a></li>
+        <li><a href="/src/pages/contact/index.html" class="sidebar-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="vector-search-container">
+            <h1 class="vector-search-title">🔍 Vector Search</h1>
+            <p class="vector-search-subtitle">Find similar products using AI-powered image and text search</p>
+            
+            <div class="search-input-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Enter image URL or text (e.g., 'car', 'robot')" value="robot">
+                <button class="search-button" onclick="performSearch()">Search</button>
+            </div>
+            
+            <div id="resultsContainer">
+                <div class="loading">Loading sample results...</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // EXP System (same as main page)
+        let currentLevel = 1;
+        let currentExp = 0;
+        let maxExp = 100;
+        
+        let playerStats = {
+            hp: 100,
+            mp: 50,
+            str: 10,
+            dex: 8,
+            int: 12,
+            cha: 9
+        };
+
+        function updateExpDisplay() {
+            const expPercentage = (currentExp / maxExp) * 100;
+            document.getElementById('exp-level').textContent = currentLevel;
+            document.getElementById('exp-now').textContent = currentExp;
+            document.getElementById('exp-max').textContent = maxExp;
+            document.getElementById('exp-bar-inner').style.width = expPercentage + '%';
+        }
+
+        function updateStatsDisplay() {
+            document.getElementById('stat-hp').textContent = playerStats.hp;
+            document.getElementById('stat-mp').textContent = playerStats.mp;
+            document.getElementById('stat-str').textContent = playerStats.str;
+            document.getElementById('stat-dex').textContent = playerStats.dex;
+            document.getElementById('stat-int').textContent = playerStats.int;
+            document.getElementById('stat-cha').textContent = playerStats.cha;
+        }
+
+        function gainExp(amount) {
+            currentExp += amount;
+            showExpFloat('+' + amount + ' EXP!');
+            
+            if (currentExp >= maxExp) {
+                currentExp = currentExp - maxExp;
+                currentLevel++;
+                maxExp = Math.floor(maxExp * 1.2);
+                showExpFloat('LEVEL UP!', true);
+            }
+            updateExpDisplay();
+        }
+
+        function showExpFloat(text, isLevelUp = false) {
+            const container = document.getElementById('exp-float-container');
+            const floatElement = document.createElement('div');
+            floatElement.className = 'exp-float';
+            floatElement.textContent = text;
+            
+            if (isLevelUp) {
+                floatElement.style.color = '#ffe066';
+                floatElement.style.textShadow = '0 0 24px #ffe066, 0 0 8px #fff';
+                floatElement.style.fontSize = '1.5rem';
+            }
+            
+            container.appendChild(floatElement);
+            setTimeout(() => {
+                floatElement.remove();
+            }, 1200);
+        }
+
+        // Vector Search Functions
+        async function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) return;
+
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = '<div class="loading">Searching for similar products...</div>';
+
+            try {
+                // Check if API is available
+                const response = await fetch('http://localhost:5000/api/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        is_url: false
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    displayResults(data.results);
+                    gainExp(10); // Reward for searching
+                } else {
+                    // Fallback to sample results if API is not available
+                    console.log('API not available, using sample results');
+                    displaySampleResults();
+                    gainExp(10);
+                }
+            } catch (error) {
+                console.log('Error connecting to API, using sample results:', error);
+                displaySampleResults();
+                gainExp(10);
+            }
+        }
+
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('resultsContainer');
+            
+            let html = '<div class="results-container">';
+            results.forEach(result => {
+                html += `
+                    <div class="result-card" onclick="selectResult('${result.product_name}')">
+                        <img src="${result.url}" alt="${result.product_name}" class="result-image">
+                        <div class="result-title">${result.product_name}</div>
+                        <div class="result-similarity">Similarity: ${result.similarity}%</div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
+            resultsContainer.innerHTML = html;
+        }
+
+        function displaySampleResults() {
+            const resultsContainer = document.getElementById('resultsContainer');
+            
+            // Sample data - in real implementation, this would come from the API
+            const sampleResults = [
+                {
+                    image: 'sample/vector_search/app_image1.jpg',
+                    title: 'Robot Toy Set',
+                    similarity: '95.2%'
+                },
+                {
+                    image: 'sample/vector_search/app_image2.jpg',
+                    title: 'Mechanical Robot',
+                    similarity: '87.8%'
+                },
+                {
+                    image: 'sample/vector_search/app_image3.jpg',
+                    title: 'Robot Action Figure',
+                    similarity: '82.1%'
+                },
+                {
+                    image: 'sample/vector_search/app_image4.jpg',
+                    title: 'Robot Building Kit',
+                    similarity: '78.9%'
+                },
+                {
+                    image: 'sample/vector_search/app_image5.jpg',
+                    title: 'Robot Model Kit',
+                    similarity: '75.3%'
+                }
+            ];
+
+            let html = '<div class="results-container">';
+            sampleResults.forEach(result => {
+                html += `
+                    <div class="result-card" onclick="selectResult('${result.title}')">
+                        <img src="${result.image}" alt="${result.title}" class="result-image">
+                        <div class="result-title">${result.title}</div>
+                        <div class="result-similarity">Similarity: ${result.similarity}</div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
+            resultsContainer.innerHTML = html;
+        }
+
+        function selectResult(title) {
+            gainExp(5); // Reward for clicking result
+            alert(`Selected: ${title}\n+5 EXP gained!`);
+        }
+
+        // Event Listeners
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateExpDisplay();
+            updateStatsDisplay();
+            displaySampleResults();
+            gainExp(5); // Starting bonus
+        });
+
+        // Scroll and click EXP gain
+        let lastScrollY = 0;
+        window.addEventListener('scroll', () => {
+            const now = Math.floor(window.scrollY/100);
+            if(now !== lastScrollY) {
+                gainExp(4);
+                lastScrollY = now;
+            }
+        });
+
+        window.addEventListener('click', (e) => {
+            gainExp(5);
+        });
+    </script>
+</body>
+</html> 

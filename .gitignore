@@ -1,0 +1,47 @@
+# Environment variables and secrets
+.env
+*.env
+.env.local
+.env.production
+
+# API Keys and credentials
+config.py
+secrets.py
+credentials.json
+api_keys.txt
+
+# Azure credentials
+azure_config.py
+azure_credentials.json
+
+# Data files that might contain sensitive information
+sample/vector_search/app/toy_data.csv
+sample/vector_search/toy_data.csv
+sample/vector_search/full_data.csv
+sample/vector_search/data_full.csv
+sample/vector_search/data.csv
+sample/vector_search/new_data.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp 
