@@ -153,17 +153,24 @@ The Vector Search feature is an AI-powered similarity search system that allows 
    AZURE_API_KEY=your-azure-api-key-here
    ```
 
-3. **Start the API server**:
+3. **Start the Streamlit app**:
    ```bash
-   python vector_search_api.py
+   python run_streamlit.py
+   ```
+   Or manually:
+   ```bash
+   streamlit run streamlit_app.py --server.port 8501
    ```
 
 4. **Access the feature**:
    Navigate to the Vector Search page via the sidebar link
+   The Streamlit app will be embedded in an iframe within the page
 
-### API Endpoints
-- `POST /api/search`: Perform vector search with query and type
-- `GET /api/health`: Health check endpoint
+### Streamlit Integration
+- **Iframe Embedding**: Streamlit app is embedded directly in the webpage
+- **Seamless Experience**: Users can search without leaving the main website
+- **Fallback Support**: Shows helpful error message if Streamlit app is not running
+- **Real-time Communication**: JavaScript and Streamlit can communicate via postMessage
 
 ### Security Notes
 - Azure credentials are stored in `.env` file (not committed to Git)

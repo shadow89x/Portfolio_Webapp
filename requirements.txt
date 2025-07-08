@@ -4,4 +4,8 @@ pandas==2.0.3
 numpy==1.24.3
 requests==2.31.0
 python-dotenv==1.0.0
-Pillow==10.0.0 
+Pillow==10.0.0
+streamlit==1.28.0
+st-clickable-images==0.0.1
+azure-ai-vision==0.13.0
+azure-storage-blob==12.18.0 

@@ -332,6 +332,80 @@
             border-radius: 1rem;
         }
 
+        .streamlit-container {
+            margin-top: 2rem;
+            border: 2px solid #00f2ff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 0 20px #00f2ff44;
+            background: #18181b;
+        }
+
+        .streamlit-container iframe {
+            background: #18181b;
+            border: none;
+        }
+
+        .streamlit-error {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 20, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .error-content {
+            text-align: center;
+            color: #fff;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .error-content h3 {
+            color: #00f2ff;
+            text-shadow: 0 0 10px #00f2ff;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background: #18181b;
+            border: 1px solid #00f2ff;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        .code-block code {
+            color: #00ffb3;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .retry-button {
+            background: linear-gradient(135deg, #00f2ff 0%, #00ffb3 100%);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            color: #000;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .retry-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px #00f2ff44;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .fixed-sidebar {
@@ -438,8 +512,22 @@
                 <button class="search-button" onclick="performSearch()">Search</button>
             </div>
             
-            <div id="resultsContainer">
-                <div class="loading">Loading sample results...</div>
+            <div id="streamlitContainer" class="streamlit-container">
+                <iframe id="streamlitFrame" src="http://localhost:8501" frameborder="0" width="100%" height="800px" onload="checkStreamlitStatus()" onerror="showStreamlitError()"></iframe>
+                <div id="streamlitError" class="streamlit-error" style="display: none;">
+                    <div class="error-content">
+                        <h3>🔧 Streamlit App Not Running</h3>
+                        <p>To use the full Vector Search functionality, please start the Streamlit app:</p>
+                        <div class="code-block">
+                            <code>python run_streamlit.py</code>
+                        </div>
+                        <p>Or install dependencies and run:</p>
+                        <div class="code-block">
+                            <code>pip install -r requirements.txt<br>streamlit run streamlit_app.py --server.port 8501</code>
+                        </div>
+                        <button onclick="retryStreamlit()" class="retry-button">Retry Connection</button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -508,112 +596,65 @@
         }
 
         // Vector Search Functions
-        async function performSearch() {
+        function performSearch() {
             const query = document.getElementById('searchInput').value.trim();
             if (!query) return;
 
-            const resultsContainer = document.getElementById('resultsContainer');
-            resultsContainer.innerHTML = '<div class="loading">Searching for similar products...</div>';
-
-            try {
-                // Check if API is available
-                const response = await fetch('http://localhost:5000/api/search', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        query: query,
-                        is_url: false
-                    })
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    displayResults(data.results);
-                    gainExp(10); // Reward for searching
-                } else {
-                    // Fallback to sample results if API is not available
-                    console.log('API not available, using sample results');
-                    displaySampleResults();
-                    gainExp(10);
+            // Send query to Streamlit app via iframe
+            const iframe = document.getElementById('streamlitFrame');
+            if (iframe && iframe.contentWindow) {
+                // Try to communicate with Streamlit app
+                try {
+                    iframe.contentWindow.postMessage({
+                        type: 'SEARCH_QUERY',
+                        query: query
+                    }, 'http://localhost:8501');
+                } catch (error) {
+                    console.log('Could not communicate with Streamlit app:', error);
                 }
-            } catch (error) {
-                console.log('Error connecting to API, using sample results:', error);
-                displaySampleResults();
-                gainExp(10);
             }
+
+            gainExp(10); // Reward for searching
         }
 
-        function displayResults(results) {
-            const resultsContainer = document.getElementById('resultsContainer');
+        // Streamlit connection management
+        function checkStreamlitStatus() {
+            const iframe = document.getElementById('streamlitFrame');
+            const errorDiv = document.getElementById('streamlitError');
             
-            let html = '<div class="results-container">';
-            results.forEach(result => {
-                html += `
-                    <div class="result-card" onclick="selectResult('${result.product_name}')">
-                        <img src="${result.url}" alt="${result.product_name}" class="result-image">
-                        <div class="result-title">${result.product_name}</div>
-                        <div class="result-similarity">Similarity: ${result.similarity}%</div>
-                    </div>
-                `;
-            });
-            html += '</div>';
-            
-            resultsContainer.innerHTML = html;
-        }
-
-        function displaySampleResults() {
-            const resultsContainer = document.getElementById('resultsContainer');
-            
-            // Sample data - in real implementation, this would come from the API
-            const sampleResults = [
-                {
-                    image: 'sample/vector_search/app_image1.jpg',
-                    title: 'Robot Toy Set',
-                    similarity: '95.2%'
-                },
-                {
-                    image: 'sample/vector_search/app_image2.jpg',
-                    title: 'Mechanical Robot',
-                    similarity: '87.8%'
-                },
-                {
-                    image: 'sample/vector_search/app_image3.jpg',
-                    title: 'Robot Action Figure',
-                    similarity: '82.1%'
-                },
-                {
-                    image: 'sample/vector_search/app_image4.jpg',
-                    title: 'Robot Building Kit',
-                    similarity: '78.9%'
-                },
-                {
-                    image: 'sample/vector_search/app_image5.jpg',
-                    title: 'Robot Model Kit',
-                    similarity: '75.3%'
+            setTimeout(() => {
+                try {
+                    // Try to access iframe content
+                    if (iframe.contentWindow && iframe.contentWindow.document) {
+                        errorDiv.style.display = 'none';
+                    }
+                } catch (e) {
+                    showStreamlitError();
                 }
-            ];
+            }, 3000);
+        }
 
-            let html = '<div class="results-container">';
-            sampleResults.forEach(result => {
-                html += `
-                    <div class="result-card" onclick="selectResult('${result.title}')">
-                        <img src="${result.image}" alt="${result.title}" class="result-image">
-                        <div class="result-title">${result.title}</div>
-                        <div class="result-similarity">Similarity: ${result.similarity}</div>
-                    </div>
-                `;
-            });
-            html += '</div>';
+        function showStreamlitError() {
+            const errorDiv = document.getElementById('streamlitError');
+            errorDiv.style.display = 'flex';
+        }
+
+        function retryStreamlit() {
+            const iframe = document.getElementById('streamlitFrame');
+            const errorDiv = document.getElementById('streamlitError');
             
-            resultsContainer.innerHTML = html;
+            errorDiv.style.display = 'none';
+            iframe.src = iframe.src; // Reload iframe
         }
 
-        function selectResult(title) {
-            gainExp(5); // Reward for clicking result
-            alert(`Selected: ${title}\n+5 EXP gained!`);
-        }
+        // Listen for messages from Streamlit iframe
+        window.addEventListener('message', function(event) {
+            if (event.origin !== 'http://localhost:8501') return;
+            
+            if (event.data.type === 'SEARCH_RESULT') {
+                gainExp(5); // Reward for result
+            }
+        });
 
         // Event Listeners
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
