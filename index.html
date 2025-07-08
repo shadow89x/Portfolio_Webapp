@@ -258,7 +258,7 @@
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            width: 60px;
+            width: 120px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 0 15px 15px 0;
             box-shadow: 
@@ -281,22 +281,23 @@
             font-size: 12px;
             font-weight: 600;
             text-decoration: none;
-            padding: 8px 4px;
+            padding: 8px 12px;
             border-radius: 8px;
             transition: all 0.3s ease;
             text-align: center;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            min-height: 60px;
+            min-height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            text-shadow: 0 0 4px #00f2ff, 0 0 1px #fff;
+            white-space: nowrap;
         }
 
         .sidebar-link:hover, .sidebar-link:focus {
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
+            background: linear-gradient(90deg, #00f2ff44 0%, #ff00e644 100%);
+            color: #00f2ff;
+            box-shadow: 0 0 16px #00f2ffcc, 0 2px 8px #ff00e6cc;
         }
 
         /* Neon EXP Bar Fixed */
@@ -304,95 +305,262 @@
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 10px 20px;
-            box-shadow: 
-                0 0 20px rgba(102, 126, 234, 0.6),
-                0 0 40px rgba(102, 126, 234, 0.3);
-            z-index: 999;
+            width: 100vw;
+            z-index: 1000;
+            background: rgba(10,10,20,0.85);
+            box-shadow: 0 2px 24px #00f2ff44, 0 0 0 2px #00f2ff55 inset;
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
         }
 
         .exp-bar-content {
             display: flex;
             align-items: center;
-            gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 1.2rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
         }
 
         .exp-level {
-            color: white;
+            color: #00f2ff;
+            font-size: 1.2rem;
             font-weight: bold;
-            font-size: 14px;
-            min-width: 60px;
+            text-shadow: 0 0 8px #00f2ff, 0 0 2px #fff;
         }
 
         .exp-bar-outer {
-            flex: 1;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
+            width: 240px;
+            height: 18px;
+            background: #181c2a;
+            border-radius: 12px;
+            box-shadow: 0 0 12px #00f2ff55, 0 0 0 2px #00f2ff44 inset;
             overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0 0.5rem;
         }
 
         .exp-bar-inner {
             height: 100%;
-            background: linear-gradient(90deg, #00ff88, #00ccff);
-            border-radius: 10px;
-            transition: width 0.5s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            background: linear-gradient(90deg, #00f2ff 0%, #00ffb3 100%);
+            box-shadow: 0 0 16px #00f2ffcc, 0 0 8px #00ffb3cc;
+            border-radius: 12px 0 0 12px;
+            transition: width 0.6s cubic-bezier(.4,2,.6,1);
         }
 
         .exp-value {
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-            min-width: 120px;
-            text-align: right;
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 0 6px #00f2ff, 0 0 2px #fff;
+        }
+
+        .stats-display {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            color: #00ffb3;
+            text-shadow: 0 0 4px #00ffb3, 0 0 1px #fff;
+            font-weight: 600;
         }
 
         #exp-float-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 56px;
+            right: 32px;
+            z-index: 2000;
             pointer-events: none;
-            z-index: 1001;
         }
 
         .exp-float {
-            position: absolute;
-            color: #00ff88;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #00ffb3;
+            text-shadow: 0 0 12px #00f2ff, 0 0 2px #fff;
             font-weight: bold;
-            font-size: 16px;
-            animation: exp-float-anim 2s ease-out forwards;
-            text-shadow: 0 0 10px #00ff88;
+            opacity: 0;
+            transform: translateY(0);
+            animation: exp-float-anim 1.2s cubic-bezier(.4,2,.6,1) forwards;
         }
 
         @keyframes exp-float-anim {
+            0% { opacity: 0; transform: translateY(0) scale(0.8); }
+            10% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+            60% { opacity: 1; transform: translateY(-32px) scale(1); }
+            100% { opacity: 0; transform: translateY(-48px) scale(0.9); }
+        }
+
+        .levelup-screen {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            width: 350px;
+            z-index: 3000;
+            pointer-events: none;
+        }
+
+        .levelup-content {
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 3px solid #ffe066;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 0 48px #ffe066cc, 0 0 24px #ff00e6cc;
+            transform: translateX(100%);
+            animation: levelup-slide-in 0.5s ease-out forwards;
+        }
+
+        .levelup-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ffe066;
+            text-shadow: 0 0 24px #ffe066, 0 0 8px #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .levelup-subtitle {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #00f2ff;
+            text-shadow: 0 0 12px #00f2ff, 0 0 4px #fff;
+            margin-bottom: 1rem;
+        }
+
+        .levelup-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .levelup-stat {
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid #00f2ff;
+            border-radius: 0.3rem;
+            padding: 0.3rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            color: #00ffb3;
+            text-shadow: 0 0 4px #00ffb3;
+        }
+
+        @keyframes levelup-slide-in {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Welcome Message Styles */
+        .welcome-message {
+            position: fixed;
+            top: 80px;
+            left: 140px;
+            z-index: 1500;
+            pointer-events: none;
+            max-width: 360px;
+            width: 360px;
+        }
+
+        .welcome-content {
+            background: linear-gradient(135deg, rgba(24, 24, 27, 0.95) 60%, rgba(35, 39, 47, 0.95) 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 1.5rem;
+            padding: 2.4rem;
+            box-shadow: 
+                0 0 32px #00f2ff88, 
+                0 0 16px #00ffb388,
+                0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            animation: welcome-glow 3s ease-in-out infinite alternate;
+        }
+
+        .welcome-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: #00f2ff;
+            text-shadow: 0 0 16px #00f2ff, 0 0 4px #fff;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .welcome-text {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            text-shadow: 0 0 4px #00f2ff, 0 0 1px #fff;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .welcome-signature {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #00ffb3;
+            text-shadow: 0 0 12px #00ffb3, 0 0 3px #fff;
+            text-align: center;
+            margin-top: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        @keyframes welcome-glow {
             0% {
-                opacity: 1;
-                transform: translateY(0);
+                box-shadow: 
+                    0 0 32px #00f2ff88, 
+                    0 0 16px #00ffb388,
+                    0 4px 16px rgba(0, 0, 0, 0.3);
             }
             100% {
-                opacity: 0;
-                transform: translateY(-50px);
+                box-shadow: 
+                    0 0 48px #00f2ffcc, 
+                    0 0 24px #00ffb3cc,
+                    0 0 8px #ff00e688,
+                    0 4px 16px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Responsive adjustments for welcome message */
+        @media (max-width: 768px) {
+            .welcome-message {
+                top: 100px;
+                width: 95%;
+            }
+            
+            .welcome-content {
+                padding: 1.8rem;
+            }
+            
+            .welcome-title {
+                font-size: 1.6rem;
+            }
+            
+            .welcome-text {
+                font-size: 1.1rem;
+            }
+            
+            .welcome-signature {
+                font-size: 1.2rem;
             }
         }
 
         /* Main Layout */
         .main-content {
-            margin-left: 60px;
-            padding-top: 60px;
+            margin-left: 140px;
+            padding-top: 20px;
             min-height: 100vh;
             background: var(--color-background);
         }
 
         .neon-hero-row {
-            padding: 40px 20px;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -409,7 +577,7 @@
                 0 0 90px rgba(102, 126, 234, 0.1);
             max-width: 1400px;
             width: 100%;
-            margin: 60px auto 0;
+            margin: 20px auto 0;
         }
 
         .main-neon-layout {
@@ -654,11 +822,9 @@
         }
 
         .neon-card.skill-card:hover {
-            transform: translateY(-8px) rotateY(5deg);
-            box-shadow: 
-                0 0 30px #00f2ff88, 
-                0 8px 25px #000b,
-                0 0 0 2px #00f2ff;
+            box-shadow: 0 0 48px #00f2ffcc, 0 4px 32px #00ffb3cc, 0 2px 16px #000b;
+            border-color: #00ffb3;
+            transform: scale(1.07) rotate(-2deg);
         }
 
         .neon-card.skill-card:hover::before {
@@ -713,7 +879,7 @@
         /* Projects Section */
         .neon-section.neon-projects {
             padding: 40px 20px;
-            margin-left: 60px;
+            margin-left: 140px;
         }
 
         .neon-title {
@@ -746,11 +912,9 @@
         }
 
         .neon-card.project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 0 20px rgba(102, 126, 234, 0.6),
-                0 0 40px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
+            box-shadow: 0 0 48px #ff00e6cc, 0 4px 32px #ffe066cc, 0 2px 16px #000b;
+            border-color: #ff00e6;
+            transform: scale(1.07) rotate(-2deg);
         }
 
         .project-title {
@@ -824,15 +988,21 @@
             }
             
             .fixed-sidebar {
-                width: 50px;
+                width: 80px;
             }
             
             .main-content {
-                margin-left: 50px;
+                margin-left: 100px;
             }
             
             .neon-section.neon-projects {
-                margin-left: 50px;
+                margin-left: 100px;
+            }
+            
+            .welcome-message {
+                left: 100px;
+                width: 300px;
+                max-width: 300px;
             }
         }
 
@@ -875,11 +1045,37 @@
     <!-- Neon EXP Bar (고정) -->
     <div id="exp-bar-fixed" class="neon-exp-bar-fixed">
       <div class="exp-bar-content">
-        <span class="exp-level">Lv. <span id="exp-level">27</span></span>
+        <span class="exp-level">Lv. <span id="exp-level">1</span></span>
         <div class="exp-bar-outer">
-          <div class="exp-bar-inner" id="exp-bar-inner" style="width:40%"></div>
+          <div class="exp-bar-inner" id="exp-bar-inner" style="width:0%"></div>
         </div>
-        <span class="exp-value"><span id="exp-now">400</span> / <span id="exp-max">1000</span> EXP</span>
+        <span class="exp-value"><span id="exp-now">0</span> / <span id="exp-max">100</span> EXP</span>
+        <div class="stats-display">
+          <span class="stat-item">HP: <span id="stat-hp">100</span></span>
+          <span class="stat-item">MP: <span id="stat-mp">50</span></span>
+          <span class="stat-item">STR: <span id="stat-str">10</span></span>
+          <span class="stat-item">DEX: <span id="stat-dex">8</span></span>
+          <span class="stat-item">INT: <span id="stat-int">12</span></span>
+          <span class="stat-item">CHA: <span id="stat-cha">9</span></span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Welcome Message -->
+    <div class="welcome-message">
+      <div class="welcome-content">
+        <div class="welcome-title">Welcome to Sanghoon Pai's Digital Realm!</div>
+        <div class="welcome-text">
+          Greetings, traveler! You've entered the neon-lit domain of a developer who's constantly leveling up their web development skills. 
+          This website is currently under active development - think of it as a work-in-progress masterpiece where the developer is grinding 
+          through web app tutorials and gaining experience points!
+        </div>
+        <div class="welcome-text">
+          For now, only the main page and quest (portfolio) links are functional, but feel free to explore and enjoy the interactive features 
+          available! The developer has ambitious plans to add many exciting new features including SQL integration, PowerBI dashboards, 
+          customer SAP systems, and much more. Stay tuned for future updates!
+        </div>
+        <div class="welcome-signature">~ Happy Coding & Leveling Up ~</div>
       </div>
     </div>
     <!-- EXP 획득 애니메이션 표시용 -->
@@ -897,7 +1093,7 @@
         <!-- Neon Hero Section -->
         <section class="neon-hero-row">
           <div class="outer-neon-border">
-            <div class="main-neon-layout" style="margin-top: 60px;">
+            <div class="main-neon-layout">
               <div class="profile-info-panel">
                 <div class="profile-photo-wrap">
                   <img src="sample/images/KakaoTalk_20220610_132225838.jpg" alt="Sanghoon Pai" class="profile-photo">
@@ -995,94 +1191,170 @@
         <section class="neon-section neon-projects">
             <h2 class="neon-title">Quests (Projects)</h2>
             <div class="neon-project-grid">
-                <a href="https://github.com/shadow89x/Portfolio/blob/master/OpenAI_DallE2_background_Image_creation.ipynb" class="neon-card project-card" target="_blank" data-exp="120" data-gold="50">
-                  <div class="project-title">OpenAI DALL-E2 Background Image Creation</div>
-                  <div class="project-desc">Remove background with Azure Computer Vision, then generate a new background with DALL-E2. A combination of AI creativity and practical application.</div>
-                  <div class="project-rewards"><span class="exp-reward">+120 EXP</span> | <span class="gold-reward">+50 Gold</span></div>
+                <a href="https://github.com/shadow89x/zoho_email_automation_and_data_anonymization" class="neon-card project-card" target="_blank" data-exp="150" data-gold="80">
+                  <div class="project-title">📧 Zoho Email Automation & Data Anonymization</div>
+                  <div class="project-desc">Enterprise-grade offline email analytics and customer management pipeline focused on privacy, scalability, and multi-language support.</div>
+                  <div class="project-rewards"><span class="exp-reward">+150 EXP</span> | <span class="gold-reward">+80 Gold</span></div>
                 </a>
-                <a href="https://github.com/shadow89x/Portfolio/blob/master/KMeans_clustering_of_medical_documents.ipynb" class="neon-card project-card" target="_blank" data-exp="100" data-gold="40">
-                  <div class="project-title">KMeans clustering of medical documents</div>
-                  <div class="project-desc">Convert PDF, preprocess, extract text, find optimal clusters, and classify documents using KMeans.</div>
-                  <div class="project-rewards"><span class="exp-reward">+100 EXP</span> | <span class="gold-reward">+40 Gold</span></div>
+                <a href="https://github.com/shadow89x/Automated-Image-Background-Removal-and-Regeneration-using-Azure-CV-and-OpenAI-DallE2" class="neon-card project-card" target="_blank" data-exp="120" data-gold="60">
+                  <div class="project-title">🎨 AI-Powered Background Regeneration</div>
+                  <div class="project-desc">Remove backgrounds using Azure Computer Vision and regenerate new ones via OpenAI DALL·E 2.</div>
+                  <div class="project-rewards"><span class="exp-reward">+120 EXP</span> | <span class="gold-reward">+60 Gold</span></div>
                 </a>
-                <a href="https://github.com/shadow89x/Portfolio" class="neon-card project-card" target="_blank" data-exp="80" data-gold="30">
-                  <div class="project-title">Portfolio Repository</div>
-                  <div class="project-desc">Collection of data analysis and machine learning projects showcasing various skills and techniques.</div>
-                  <div class="project-rewards"><span class="exp-reward">+80 EXP</span> | <span class="gold-reward">+30 Gold</span></div>
+                <a href="https://github.com/shadow89x/OpenAI_Vectorized_Image_Search" class="neon-card project-card" target="_blank" data-exp="110" data-gold="55">
+                  <div class="project-title">🔍 Vector-Based Image & Text Search</div>
+                  <div class="project-desc">Vector similarity search using Azure CV embeddings to find the most similar image or match text+image queries.</div>
+                  <div class="project-rewards"><span class="exp-reward">+110 EXP</span> | <span class="gold-reward">+55 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Healthcare_Documents_Clustering_With_Pytesseract_OCR" class="neon-card project-card" target="_blank" data-exp="100" data-gold="50">
+                  <div class="project-title">🩺 Healthcare Document Clustering</div>
+                  <div class="project-desc">OCR-based text extraction from scanned PDFs and KMeans clustering to organize medical documentation.</div>
+                  <div class="project-rewards"><span class="exp-reward">+100 EXP</span> | <span class="gold-reward">+50 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Amazon_review_analysis" class="neon-card project-card" target="_blank" data-exp="90" data-gold="45">
+                  <div class="project-title">💬 Amazon Review NLP Analysis</div>
+                  <div class="project-desc">Text mining and sentiment analysis on Amazon reviews with Python NLP and visualization tools.</div>
+                  <div class="project-rewards"><span class="exp-reward">+90 EXP</span> | <span class="gold-reward">+45 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Microsoft-Azure-Resource-Compendium" class="neon-card project-card" target="_blank" data-exp="80" data-gold="40">
+                  <div class="project-title">☁️ Microsoft Azure Resource Compendium</div>
+                  <div class="project-desc">A well-organized reference guide to Azure services, deployments, automation, and architecture.</div>
+                  <div class="project-rewards"><span class="exp-reward">+80 EXP</span> | <span class="gold-reward">+40 Gold</span></div>
                 </a>
             </div>
+        </div>
         </section>
     </main>
 
     <script>
-        // EXP 시스템 JavaScript
-        let currentExp = 400;
-        let maxExp = 1000;
-        let currentLevel = 27;
+        // EXP System
+        let currentLevel = 1;
+        let currentExp = 0;
+        let maxExp = 100;
+        
+        // Player Stats
+        let playerStats = {
+            hp: 100,
+            mp: 50,
+            str: 10,
+            dex: 8,
+            int: 12,
+            cha: 9
+        };
 
-        // 프로젝트 카드 클릭 시 EXP 획득
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const expGain = parseInt(this.getAttribute('data-exp'));
-                const goldGain = parseInt(this.getAttribute('data-gold'));
-                
-                // EXP 획득 애니메이션
-                addExp(expGain);
-                
-                // 카드 클릭 효과
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-
-        // EXP 추가 함수
-        function addExp(amount) {
-            currentExp += amount;
-            
-            // 레벨업 체크
-            while (currentExp >= maxExp) {
-                currentExp -= maxExp;
-                currentLevel++;
-                maxExp = Math.floor(maxExp * 1.2); // 다음 레벨까지 EXP 증가
-            }
-            
-            // UI 업데이트
-            updateExpUI();
-            
-            // EXP 획득 애니메이션
-            showExpGain(amount);
-        }
-
-        // EXP UI 업데이트
-        function updateExpUI() {
+        function updateExpDisplay() {
+            const expPercentage = (currentExp / maxExp) * 100;
             document.getElementById('exp-level').textContent = currentLevel;
             document.getElementById('exp-now').textContent = currentExp;
             document.getElementById('exp-max').textContent = maxExp;
-            
-            const expPercentage = (currentExp / maxExp) * 100;
             document.getElementById('exp-bar-inner').style.width = expPercentage + '%';
         }
 
-        // EXP 획득 애니메이션 표시
-        function showExpGain(amount) {
-            const container = document.getElementById('exp-float-container');
-            const expFloat = document.createElement('div');
-            expFloat.className = 'exp-float';
-            expFloat.textContent = '+' + amount + ' EXP';
-            
-            // 랜덤 위치
-            expFloat.style.left = Math.random() * 80 + 10 + '%';
-            expFloat.style.top = Math.random() * 80 + 10 + '%';
-            
-            container.appendChild(expFloat);
-            
-            // 애니메이션 완료 후 제거
-            setTimeout(() => {
-                container.removeChild(expFloat);
-            }, 2000);
+        function updateStatsDisplay() {
+            document.getElementById('stat-hp').textContent = playerStats.hp;
+            document.getElementById('stat-mp').textContent = playerStats.mp;
+            document.getElementById('stat-str').textContent = playerStats.str;
+            document.getElementById('stat-dex').textContent = playerStats.dex;
+            document.getElementById('stat-int').textContent = playerStats.int;
+            document.getElementById('stat-cha').textContent = playerStats.cha;
         }
+
+        function levelUp() {
+            currentLevel++;
+            maxExp = Math.floor(maxExp * 1.2); // 다음 레벨까지 EXP 증가
+            
+            // 스탯 증가량 계산
+            const hpGain = Math.floor(Math.random() * 5) + 5; // 5-10 증가
+            const mpGain = Math.floor(Math.random() * 3) + 3; // 3-6 증가
+            const strGain = Math.floor(Math.random() * 2) + 1; // 1-3 증가
+            const dexGain = Math.floor(Math.random() * 2) + 1; // 1-3 증가
+            const intGain = Math.floor(Math.random() * 2) + 1; // 1-3 증가
+            const chaGain = Math.floor(Math.random() * 2) + 1; // 1-3 증가
+            
+            // 스탯 적용
+            playerStats.hp += hpGain;
+            playerStats.mp += mpGain;
+            playerStats.str += strGain;
+            playerStats.dex += dexGain;
+            playerStats.int += intGain;
+            playerStats.cha += chaGain;
+            
+            showLevelUpScreen(hpGain, mpGain, strGain, dexGain, intGain, chaGain);
+            updateExpDisplay();
+            updateStatsDisplay();
+        }
+
+        function gainExp(amount) {
+            currentExp += amount;
+            showExpFloat('+' + amount + ' EXP!');
+            
+            if (currentExp >= maxExp) {
+                currentExp = currentExp - maxExp;
+                levelUp();
+            } else {
+                updateExpDisplay();
+            }
+        }
+
+        function showExpFloat(text) {
+            const container = document.getElementById('exp-float-container');
+            const floatElement = document.createElement('div');
+            floatElement.className = 'exp-float';
+            floatElement.textContent = text;
+            
+            container.appendChild(floatElement);
+            setTimeout(() => {
+                floatElement.remove();
+            }, 1200);
+        }
+
+        function showLevelUpScreen(hpGain, mpGain, strGain, dexGain, intGain, chaGain) {
+            const levelUpScreen = document.createElement('div');
+            levelUpScreen.className = 'levelup-screen';
+            levelUpScreen.innerHTML = `
+                <div class="levelup-content">
+                    <div class="levelup-title">LEVEL UP!</div>
+                    <div class="levelup-subtitle">Reached Level ${currentLevel}!</div>
+                    <div class="levelup-stats">
+                        <div class="levelup-stat">HP +${hpGain}</div>
+                        <div class="levelup-stat">MP +${mpGain}</div>
+                        <div class="levelup-stat">STR +${strGain}</div>
+                        <div class="levelup-stat">DEX +${dexGain}</div>
+                        <div class="levelup-stat">INT +${intGain}</div>
+                        <div class="levelup-stat">CHA +${chaGain}</div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(levelUpScreen);
+            
+            // 3초 후 제거
+            setTimeout(() => {
+                levelUpScreen.remove();
+            }, 3000);
+        }
+
+        // 스크롤 시 경험치 +4 (100px마다)
+        let lastScrollY = 0;
+        window.addEventListener('scroll', () => {
+            const now = Math.floor(window.scrollY/100);
+            if(now !== lastScrollY) {
+                gainExp(4);
+                lastScrollY = now;
+            }
+        });
+
+        // 클릭 시 경험치 +5
+        window.addEventListener('click', (e) => {
+            gainExp(5);
+        });
+
+        // Initialize EXP system
+        document.addEventListener('DOMContentLoaded', () => {
+            updateExpDisplay();
+            updateStatsDisplay();
+            gainExp(10); // Starting bonus
+        });
     </script>
 </body>
 </html> 
