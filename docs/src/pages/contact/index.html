@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with me for collaborations, opportunities, or just to say hello">
+    <meta name="keywords" content="contact, get in touch, collaboration, opportunities">
+    <meta name="author" content="Your Name">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/contact">
+    <meta property="og:title" content="Contact Me - Let's Work Together">
+    <meta property="og:description" content="Get in touch with me for collaborations, opportunities, or just to say hello">
+    <meta property="og:image" content="https://your-domain.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/contact">
+    <meta property="twitter:title" content="Contact Me - Let's Work Together">
+    <meta property="twitter:description" content="Get in touch with me for collaborations, opportunities, or just to say hello">
+    <meta property="twitter:image" content="https://your-domain.com/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/styles/base/reset.css" as="style">
+    <link rel="preload" href="/src/styles/base/variables.css" as="style">
+    <link rel="preload" href="/src/styles/base/typography.css" as="style">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/styles/base/reset.css">
+    <link rel="stylesheet" href="/src/styles/base/variables.css">
+    <link rel="stylesheet" href="/src/styles/base/typography.css">
+    <link rel="stylesheet" href="/src/styles/base/layout.css">
+    <link rel="stylesheet" href="/src/styles/components/navigation.css">
+    <link rel="stylesheet" href="/src/styles/components/theme-toggle.css">
+    <link rel="stylesheet" href="/src/styles/components/form.css">
+    <link rel="stylesheet" href="/src/styles/pages/contact.css">
+    
+    <title>Contact Me - Let's Work Together</title>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="navigation" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link" aria-label="Home">
+                        <span class="brand-text">Portfolio</span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="/" class="nav-link" role="menuitem">Home</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/portfolio" class="nav-link" role="menuitem">Portfolio</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="/contact" class="nav-link" role="menuitem" aria-current="page">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="nav-controls">
+                    <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+                        <svg class="theme-icon theme-icon-light" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" type="button" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" role="main">
+        <!-- Contact Header -->
+        <section class="contact-header" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="contact-header-content">
+                    <h1 id="contact-title" class="contact-title">Let's Work Together</h1>
+                    <p class="contact-subtitle">
+                        I'm always interested in new opportunities, collaborations, and interesting projects. 
+                        Feel free to reach out if you'd like to discuss working together.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-section">
+                        <h2 class="section-title">Send a Message</h2>
+                        <p class="section-description">
+                            Fill out the form below and I'll get back to you as soon as possible.
+                        </p>
+                        
+                        <form class="contact-form" id="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="name" class="form-label">Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    class="form-input" 
+                                    required
+                                    aria-describedby="name-error"
+                                >
+                                <div id="name-error" class="form-error" role="alert"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    required
+                                    aria-describedby="email-error"
+                                >
+                                <div id="email-error" class="form-error" role="alert"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <select id="subject" name="subject" class="form-select" required aria-describedby="subject-error">
+                                    <option value="">Select a subject</option>
+                                    <option value="project-inquiry">Project Inquiry</option>
+                                    <option value="collaboration">Collaboration</option>
+                                    <option value="job-opportunity">Job Opportunity</option>
+                                    <option value="freelance-work">Freelance Work</option>
+                                    <option value="general">General Question</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div id="subject-error" class="form-error" role="alert"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    class="form-textarea" 
+                                    rows="6" 
+                                    required
+                                    placeholder="Tell me about your project, opportunity, or question..."
+                                    aria-describedby="message-error"
+                                ></textarea>
+                                <div id="message-error" class="form-error" role="alert"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-checkbox">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <span class="checkbox-custom"></span>
+                                    Subscribe to my newsletter for updates and insights
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary" id="submit-btn">
+                                    <span class="btn-text">Send Message</span>
+                                    <span class="btn-loading" hidden>
+                                        <svg class="loading-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10" stroke-dasharray="31.416" stroke-dashoffset="31.416"/>
+                                        </svg>
+                                        Sending...
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="contact-info-section">
+                        <h2 class="section-title">Get in Touch</h2>
+                        <p class="section-description">
+                            You can also reach me through these channels:
+                        </p>
+
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3 class="contact-method-title">Email</h3>
+                                    <a href="mailto:your.email@example.com" class="contact-method-link">
+                                        your.email@example.com
+                                    </a>
+                                    <p class="contact-method-description">
+                                        I typically respond within 24 hours
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3 class="contact-method-title">Phone</h3>
+                                    <a href="tel:+1234567890" class="contact-method-link">
+                                        +1 (234) 567-890
+                                    </a>
+                                    <p class="contact-method-description">
+                                        Available Mon-Fri, 9 AM - 6 PM EST
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3 class="contact-method-title">Location</h3>
+                                    <p class="contact-method-link">
+                                        New York, NY, USA
+                                    </p>
+                                    <p class="contact-method-description">
+                                        Open to remote work and travel
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="social-links-section">
+                            <h3 class="social-links-title">Follow Me</h3>
+                            <div class="social-links">
+                                <a href="https://github.com/yourusername" class="social-link" aria-label="GitHub">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                                <a href="https://linkedin.com/in/yourusername" class="social-link" aria-label="LinkedIn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                    <span>LinkedIn</span>
+                                </a>
+                                <a href="https://twitter.com/yourusername" class="social-link" aria-label="Twitter">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                    </svg>
+                                    <span>Twitter</span>
+                                </a>
+                                <a href="https://dribbble.com/yourusername" class="social-link" aria-label="Dribbble">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
+                                    </svg>
+                                    <span>Dribbble</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Availability Status -->
+                        <div class="availability-section">
+                            <h3 class="availability-title">Current Availability</h3>
+                            <div class="availability-status available">
+                                <div class="availability-indicator"></div>
+                                <div class="availability-content">
+                                    <span class="availability-text">Available for new projects</span>
+                                    <span class="availability-details">Open to full-time, contract, and freelance opportunities</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" aria-labelledby="faq-title">
+            <div class="container">
+                <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+                            What types of projects do you work on?
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div id="faq-1" class="faq-answer" hidden>
+                            <p>I specialize in web development, data analysis, and machine learning projects. This includes full-stack web applications, data visualization dashboards, API development, and predictive analytics models. I'm always open to exploring new technologies and domains.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+                            What are your rates and availability?
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div id="faq-2" class="faq-answer" hidden>
+                            <p>My rates vary depending on the project scope, complexity, and timeline. I'm currently available for new projects and can work on a project basis, hourly rate, or retainer arrangement. Let's discuss your specific needs to determine the best approach.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+                            Do you work remotely or on-site?
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div id="faq-3" class="faq-answer" hidden>
+                            <p>I primarily work remotely and have extensive experience collaborating with distributed teams. However, I'm also open to on-site work for specific projects or meetings when necessary. I'm flexible and can adapt to your preferred working arrangement.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+                            What is your typical project timeline?
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div id="faq-4" class="faq-answer" hidden>
+                            <p>Project timelines depend on the scope and complexity. Small projects might take 1-2 weeks, while larger applications can span 2-3 months. I always provide detailed project estimates and keep clients updated on progress throughout the development process.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Connect</h3>
+                    <ul class="social-links">
+                        <li><a href="https://github.com/yourusername" aria-label="GitHub">GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn">LinkedIn</a></li>
+                        <li><a href="mailto:your.email@example.com" aria-label="Email">Email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-text">
+                        © 2024 Your Name. Built with ❤️ using HTML, CSS, and JavaScript.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal" role="dialog" aria-labelledby="success-title" aria-hidden="true">
+        <div class="modal-backdrop" id="success-backdrop"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="success-title" class="modal-title">Message Sent!</h2>
+                <button class="modal-close" id="success-close" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="success-content">
+                    <svg class="success-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22,4 12,14.01 9,11.01"/>
+                    </svg>
+                    <h3>Thank you for your message!</h3>
+                    <p>I've received your message and will get back to you within 24 hours. I look forward to discussing your project or opportunity.</p>
+                    <button class="btn btn-primary" id="success-ok">Got it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/contact.js"></script>
+</body>
+</html> 

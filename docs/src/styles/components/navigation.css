@@ -1,0 +1,439 @@
+/* ========================================
+   Navigation Component Styles
+   ======================================== */
+
+/*
+   Why a dedicated navigation component?
+   - Reusable across all pages
+   - Consistent navigation experience
+   - Better accessibility
+   - Easier maintenance
+   
+   Alternative approaches:
+   - Inline styles in each page
+   - CSS frameworks
+   - JavaScript-based navigation
+   
+   We chose a CSS-based approach because:
+   - Better performance
+   - Simpler implementation
+   - Better accessibility
+   - Easier to customize
+*/
+
+/* ========================================
+   Header
+   ======================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+}
+
+.header.scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   Navigation Container
+   ======================================== */
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) 0;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* ========================================
+   Brand/Logo
+   ======================================== */
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  transition: color var(--transition-fast);
+}
+
+.brand-link:hover {
+  color: var(--color-primary-600);
+}
+
+.brand-text {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-accent-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   Navigation Menu
+   ======================================== */
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-hover);
+}
+
+.nav-link:focus {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--color-primary-600);
+  background-color: var(--color-primary-50);
+}
+
+.nav-link[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-primary-600);
+  border-radius: var(--radius-full);
+}
+
+/* ========================================
+   Navigation Controls
+   ======================================== */
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* ========================================
+   Theme Toggle Button
+   ======================================== */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  transition: all var(--transition-base);
+}
+
+.theme-icon-light {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.theme-icon-dark {
+  position: absolute;
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+[data-theme="dark"] .theme-icon-light {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+[data-theme="dark"] .theme-icon-dark {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* ========================================
+   Mobile Menu Toggle
+   ======================================== */
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.mobile-menu-toggle:focus {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] {
+  background-color: var(--color-primary-600);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary-600);
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+  transform-origin: center;
+}
+
+.hamburger-line:nth-child(1) {
+  margin-bottom: 4px;
+}
+
+.hamburger-line:nth-child(2) {
+  margin-bottom: 4px;
+}
+
+.hamburger-line:nth-child(3) {
+  margin-bottom: 0;
+}
+
+/* Hamburger animation when expanded */
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ========================================
+   Mobile Navigation
+   ======================================== */
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-background);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-4);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .nav-menu[data-expanded="true"] {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-item {
+    width: 100%;
+  }
+  
+  .nav-link {
+    width: 100%;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    justify-content: flex-start;
+  }
+  
+  .nav-link[aria-current="page"]::after {
+    display: none;
+  }
+  
+  .nav-link[aria-current="page"] {
+    background-color: var(--color-primary-50);
+    color: var(--color-primary-600);
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-controls {
+    gap: var(--space-2);
+  }
+}
+
+/* ========================================
+   Tablet Navigation
+   ======================================== */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .nav-container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+  
+  .nav-menu {
+    gap: var(--space-6);
+  }
+}
+
+/* ========================================
+   Large Screen Navigation
+   ======================================== */
+
+@media (min-width: 1025px) {
+  .nav-container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+  
+  .nav-menu {
+    gap: var(--space-8);
+  }
+}
+
+/* ========================================
+   Accessibility Enhancements
+   ======================================== */
+
+/* Focus visible for better keyboard navigation */
+.nav-link:focus-visible,
+.theme-toggle:focus-visible,
+.mobile-menu-toggle:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+.nav-link:focus:not(:focus-visible),
+.theme-toggle:focus:not(:focus-visible),
+.mobile-menu-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ========================================
+   Reduced Motion Support
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link,
+  .theme-toggle,
+  .mobile-menu-toggle,
+  .hamburger-line,
+  .nav-menu {
+    transition: none;
+  }
+  
+  .theme-icon {
+    transition: none;
+  }
+}
+
+/* ========================================
+   High Contrast Mode
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  .header {
+    border-bottom: 2px solid var(--color-border);
+  }
+  
+  .nav-link[aria-current="page"] {
+    border: 2px solid var(--color-primary-600);
+  }
+  
+  .theme-toggle,
+  .mobile-menu-toggle {
+    border: 2px solid var(--color-border);
+  }
+} 

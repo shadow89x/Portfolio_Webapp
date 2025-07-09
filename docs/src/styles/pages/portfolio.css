@@ -1,0 +1,612 @@
+/* ========================================
+   Portfolio Page Styles
+   ======================================== */
+
+/*
+   Why dedicated portfolio page styles?
+   - Complex layout requirements
+   - Interactive components (filters, search)
+   - Grid-based project display
+   - Modal functionality
+   - Responsive design patterns
+   
+   Alternative approaches:
+   - Inline styles: Poor maintainability
+   - CSS frameworks: Less control, larger bundle
+   - CSS-in-JS: More complex setup
+   
+   We chose modular CSS for:
+   - Better organization
+   - Easier maintenance
+   - Performance benefits
+   - Full design control
+*/
+
+/* ========================================
+   Portfolio Header
+   ======================================== */
+
+.portfolio-header {
+  padding: var(--space-16) 0 var(--space-12) 0;
+  background: linear-gradient(135deg, 
+    var(--color-background) 0%, 
+    var(--color-surface-elevated) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, 
+    var(--color-primary-50) 0%, 
+    transparent 50%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.portfolio-header-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.portfolio-subtitle {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================
+   Portfolio Filters
+   ======================================== */
+
+.portfolio-filters {
+  padding: var(--space-8) 0;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 64px;
+  z-index: var(--z-sticky);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.filters-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-6);
+  align-items: end;
+}
+
+.search-container,
+.filter-container,
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.search-label,
+.filter-label,
+.sort-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--space-3);
+  color: var(--color-text-tertiary);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-10);
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  transition: all var(--transition-base);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.search-input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.search-help,
+.filter-help,
+.sort-help {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+.filter-select,
+.sort-select {
+  padding: var(--space-3);
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.filter-select:focus,
+.sort-select:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.active-filters {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.active-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-primary-200);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.active-filter-remove {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.active-filter-remove:hover {
+  background-color: var(--color-primary-100);
+}
+
+/* ========================================
+   Projects Section
+   ======================================== */
+
+.projects-section {
+  padding: var(--space-12) 0;
+  background-color: var(--color-background);
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.projects-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.projects-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+/* ========================================
+   Empty State
+   ======================================== */
+
+.projects-empty {
+  text-align: center;
+  padding: var(--space-16) 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.empty-icon {
+  color: var(--color-text-tertiary);
+  opacity: 0.5;
+}
+
+.empty-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.empty-description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ========================================
+   Loading State
+   ======================================== */
+
+.projects-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-16) 0;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  color: var(--color-primary-600);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   GitHub Integration Section
+   ======================================== */
+
+.github-section {
+  padding: var(--space-16) 0;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.github-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.github-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.github-description {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-8) 0;
+}
+
+.github-features {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.feature-icon {
+  color: var(--color-primary-600);
+}
+
+#github-connect {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ========================================
+   Modal Styles
+   ======================================== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+}
+
+.modal[aria-hidden="false"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.modal-container {
+  position: relative;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2xl);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 600px;
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform var(--transition-base);
+}
+
+.modal[aria-hidden="false"] .modal-container {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.modal-content {
+  padding: var(--space-6);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .portfolio-title {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .portfolio-subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .filters-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .github-features {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-header {
+    padding: var(--space-12) 0 var(--space-8) 0;
+  }
+  
+  .portfolio-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .portfolio-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .portfolio-filters {
+    top: 0;
+    padding: var(--space-4) 0;
+  }
+  
+  .projects-section {
+    padding: var(--space-8) 0;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .modal-container {
+    width: 95vw;
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    padding: var(--space-4);
+  }
+  
+  .modal-content {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .projects-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .github-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .github-description {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ========================================
+   Accessibility Enhancements
+   ======================================== */
+
+/* Focus management for modal */
+.modal[aria-hidden="false"] .modal-container {
+  outline: none;
+}
+
+/* Screen reader announcements */
+[aria-live="polite"] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .portfolio-filters {
+    border-bottom: 2px solid var(--color-border);
+  }
+  
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .active-filter {
+    border: 2px solid var(--color-primary-600);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal-container,
+  .spinner {
+    transition: none;
+    animation: none;
+  }
+  
+  .modal[aria-hidden="false"] .modal-container {
+    transform: none;
+  }
+} 

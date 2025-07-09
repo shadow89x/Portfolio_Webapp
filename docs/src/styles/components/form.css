@@ -1,0 +1,715 @@
+/* ========================================
+   Form Component Styles
+   ======================================== */
+
+/*
+   Why dedicated form styles?
+   - Reusable across multiple pages
+   - Complex validation states
+   - Consistent form design
+   - Accessibility requirements
+   
+   Design principles:
+   - Clear visual feedback
+   - Accessible form controls
+   - Consistent with design system
+   - Responsive behavior
+*/
+
+/* ========================================
+   Form Container
+   ======================================== */
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+/* ========================================
+   Form Groups
+   ======================================== */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  position: relative;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.form-group-inline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ========================================
+   Form Labels
+   ======================================== */
+
+.form-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.form-label-required::after {
+  content: ' *';
+  color: var(--color-error-600);
+  font-weight: var(--font-weight-bold);
+}
+
+.form-label-optional::after {
+  content: ' (optional)';
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-xs);
+}
+
+/* ========================================
+   Form Inputs
+   ======================================== */
+
+.form-input,
+.form-select,
+.form-textarea {
+  padding: var(--space-3);
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  transition: all var(--transition-base);
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+  background-color: var(--color-surface);
+}
+
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover {
+  border-color: var(--color-border-hover);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.form-input:focus::placeholder,
+.form-textarea:focus::placeholder {
+  color: var(--color-text-secondary);
+  font-style: normal;
+}
+
+/* ========================================
+   Input Sizes
+   ======================================== */
+
+.form-input-sm {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.form-input-lg {
+  padding: var(--space-4) var(--space-3);
+  font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   Input Types
+   ======================================== */
+
+.form-input[type="search"] {
+  padding-left: var(--space-10);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3e%3ccircle cx='11' cy='11' r='8'/%3e%3cpath d='m21 21-4.35-4.35'/%3e%3c/svg%3e");
+  background-position: left var(--space-3) center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+.form-input[type="search"]:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%233b82f6'%3e%3ccircle cx='11' cy='11' r='8'/%3e%3cpath d='m21 21-4.35-4.35'/%3e%3c/svg%3e");
+}
+
+.form-input[type="file"] {
+  padding: var(--space-2);
+  cursor: pointer;
+}
+
+.form-input[type="file"]::-webkit-file-upload-button {
+  background-color: var(--color-primary-600);
+  color: white;
+  border: none;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  margin-right: var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.form-input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: var(--color-primary-700);
+}
+
+/* ========================================
+   Select Dropdowns
+   ======================================== */
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--space-2) center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: var(--space-10);
+}
+
+.form-select:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+.form-select option {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: var(--space-2);
+}
+
+/* ========================================
+   Textarea
+   ======================================== */
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: var(--line-height-relaxed);
+}
+
+.form-textarea-sm {
+  min-height: 80px;
+}
+
+.form-textarea-lg {
+  min-height: 150px;
+}
+
+/* ========================================
+   Form Validation States
+   ======================================== */
+
+.form-input.is-valid,
+.form-select.is-valid,
+.form-textarea.is-valid {
+  border-color: var(--color-success-500);
+  box-shadow: 0 0 0 1px var(--color-success-500);
+}
+
+.form-input.is-valid:focus,
+.form-select.is-valid:focus,
+.form-textarea.is-valid:focus {
+  border-color: var(--color-success-600);
+  box-shadow: 0 0 0 3px var(--color-success-100);
+}
+
+.form-input.is-invalid,
+.form-select.is-invalid,
+.form-textarea.is-invalid {
+  border-color: var(--color-error-500);
+  box-shadow: 0 0 0 1px var(--color-error-500);
+}
+
+.form-input.is-invalid:focus,
+.form-select.is-invalid:focus,
+.form-textarea.is-invalid:focus {
+  border-color: var(--color-error-600);
+  box-shadow: 0 0 0 3px var(--color-error-100);
+}
+
+/* ========================================
+   Form Messages
+   ======================================== */
+
+.form-help {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.form-help::before {
+  content: '💡';
+  font-size: 12px;
+}
+
+.form-error {
+  font-size: var(--font-size-sm);
+  color: var(--color-error-600);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 20px;
+}
+
+.form-error::before {
+  content: '⚠️';
+  font-size: 12px;
+}
+
+.form-success {
+  font-size: var(--font-size-sm);
+  color: var(--color-success-600);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.form-success::before {
+  content: '✅';
+  font-size: 12px;
+}
+
+/* ========================================
+   Checkboxes and Radio Buttons
+   ======================================== */
+
+.form-checkbox,
+.form-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  user-select: none;
+}
+
+.form-checkbox input[type="checkbox"],
+.form-radio input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary-600);
+  cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.form-checkbox input[type="checkbox"]:focus,
+.form-radio input[type="radio"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+.form-checkbox input[type="checkbox"]:checked + span,
+.form-radio input[type="radio"]:checked + span {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ========================================
+   Custom Checkbox
+   ======================================== */
+
+.form-checkbox-custom {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-surface-elevated);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.form-checkbox-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.form-checkbox input[type="checkbox"]:checked ~ .form-checkbox-custom {
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+
+.form-checkbox input[type="checkbox"]:checked ~ .form-checkbox-custom::after {
+  opacity: 1;
+}
+
+.form-checkbox input[type="checkbox"]:focus ~ .form-checkbox-custom {
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+/* ========================================
+   Form Actions
+   ======================================== */
+
+.form-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.form-actions-center {
+  justify-content: center;
+}
+
+.form-actions-end {
+  justify-content: flex-end;
+}
+
+.form-actions-stack {
+  flex-direction: column;
+}
+
+/* ========================================
+   Form Buttons
+   ======================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-primary-600);
+  color: white;
+  border: 1px solid var(--color-primary-600);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 48px;
+  font-family: inherit;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  transform: translateY(-1px);
+}
+
+.btn:focus {
+  outline: none;
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-800);
+  box-shadow: 0 0 0 3px var(--color-primary-200);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  background-color: var(--color-text-tertiary);
+  border-color: var(--color-text-tertiary);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background-color: var(--color-surface-elevated);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
+  color: var(--color-text-primary);
+}
+
+.btn-secondary:focus {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-300);
+  color: var(--color-primary-700);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-600);
+  color: white;
+}
+
+.btn-outline:focus {
+  background-color: var(--color-primary-600);
+  color: white;
+  box-shadow: 0 0 0 3px var(--color-primary-200);
+}
+
+.btn-danger {
+  background-color: var(--color-error-600);
+  border-color: var(--color-error-600);
+}
+
+.btn-danger:hover {
+  background-color: var(--color-error-700);
+  border-color: var(--color-error-700);
+}
+
+.btn-danger:focus {
+  background-color: var(--color-error-700);
+  border-color: var(--color-error-800);
+  box-shadow: 0 0 0 3px var(--color-error-200);
+}
+
+.btn-success {
+  background-color: var(--color-success-600);
+  border-color: var(--color-success-600);
+}
+
+.btn-success:hover {
+  background-color: var(--color-success-700);
+  border-color: var(--color-success-700);
+}
+
+.btn-success:focus {
+  background-color: var(--color-success-700);
+  border-color: var(--color-success-800);
+  box-shadow: 0 0 0 3px var(--color-success-200);
+}
+
+/* ========================================
+   Button Sizes
+   ======================================== */
+
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  min-height: 36px;
+}
+
+.btn-lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-lg);
+  min-height: 56px;
+}
+
+/* ========================================
+   Button States
+   ======================================== */
+
+.btn-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.btn-loading .loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ========================================
+   Form Field Groups
+   ======================================== */
+
+.form-field-group {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-end;
+}
+
+.form-field-group .form-group {
+  flex: 1;
+}
+
+.form-field-group .form-group:first-child {
+  flex: 2;
+}
+
+/* ========================================
+   Form Grid
+   ======================================== */
+
+.form-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.form-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.form-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .form-group-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .form-group-inline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-grid-2,
+  .form-grid-3,
+  .form-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-field-group {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .form-field-group .form-group:first-child {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-base);
+  }
+  
+  .btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-base);
+    min-height: 44px;
+  }
+}
+
+/* ========================================
+   Accessibility Enhancements
+   ======================================== */
+
+/* Focus visible for keyboard navigation */
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .form-input,
+  .form-select,
+  .form-textarea {
+    border: 2px solid var(--color-border);
+  }
+  
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--color-primary-600);
+  }
+  
+  .btn {
+    border: 2px solid var(--color-primary-600);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .form-input,
+  .form-select,
+  .form-textarea,
+  .btn,
+  .form-checkbox-custom {
+    transition: none;
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+  
+  .btn-loading .loading-spinner {
+    animation: none;
+  }
+} 

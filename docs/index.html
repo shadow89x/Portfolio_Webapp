@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sanghoon Pai's personal portfolio website showcasing web development, data analysis, AI/ML projects, and technical expertise with interactive gaming-inspired UI">
+    <meta name="keywords" content="Sanghoon Pai, portfolio, web development, data analysis, AI, machine learning, python, javascript, html, css, azure, openai, vector search">
+    <meta name="author" content="Sanghoon Pai">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00f2ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sanghoon Pai Portfolio">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shadow89x.github.io/optical_warehouse_web/">
+    <meta property="og:title" content="Sanghoon Pai - Data Analyst & Web Developer Portfolio">
+    <meta property="og:description" content="Interactive gaming-inspired portfolio showcasing AI/ML projects, data analysis, and web development with vector search capabilities">
+    <meta property="og:image" content="https://shadow89x.github.io/optical_warehouse_web/sample/images/KakaoTalk_20220610_132225838.jpg">
+    <meta property="og:site_name" content="Sanghoon Pai Portfolio">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://shadow89x.github.io/optical_warehouse_web/">
+    <meta property="twitter:title" content="Sanghoon Pai - Data Analyst & Web Developer Portfolio">
+    <meta property="twitter:description" content="Interactive gaming-inspired portfolio showcasing AI/ML projects, data analysis, and web development with vector search capabilities">
+    <meta property="twitter:image" content="https://shadow89x.github.io/optical_warehouse_web/sample/images/KakaoTalk_20220610_132225838.jpg">
+    <meta property="twitter:creator" content="@shadow89x">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sanghoon Portfolio">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <title>Sanghoon Pai - Data Analyst & Web Developer Portfolio</title>
+
+    <style>
+        /* CSS Variables */
+        :root {
+            /* Color Palette */
+            --color-primary-50: #f0f9ff;
+            --color-primary-100: #e0f2fe;
+            --color-primary-200: #bae6fd;
+            --color-primary-300: #7dd3fc;
+            --color-primary-400: #38bdf8;
+            --color-primary-500: #0ea5e9;
+            --color-primary-600: #0284c7;
+            --color-primary-700: #0369a1;
+            --color-primary-800: #075985;
+            --color-primary-900: #0c4a6e;
+            
+            --color-secondary-50: #f8fafc;
+            --color-secondary-100: #f1f5f9;
+            --color-secondary-200: #e2e8f0;
+            --color-secondary-300: #cbd5e1;
+            --color-secondary-400: #94a3b8;
+            --color-secondary-500: #64748b;
+            --color-secondary-600: #475569;
+            --color-secondary-700: #334155;
+            --color-secondary-800: #1e293b;
+            --color-secondary-900: #0f172a;
+            
+            --color-accent-50: #f0fdfa;
+            --color-accent-100: #ccfbf1;
+            --color-accent-200: #99f6e4;
+            --color-accent-300: #5eead4;
+            --color-accent-400: #2dd4bf;
+            --color-accent-500: #14b8a6;
+            --color-accent-600: #0d9488;
+            --color-accent-700: #0f766e;
+            --color-accent-800: #115e59;
+            --color-accent-900: #134e4a;
+            
+            --color-success-50: #f0fdf4;
+            --color-success-500: #22c55e;
+            --color-success-600: #16a34a;
+            
+            --color-warning-50: #fffbeb;
+            --color-warning-500: #f59e0b;
+            --color-warning-600: #d97706;
+            
+            --color-error-50: #fef2f2;
+            --color-error-500: #ef4444;
+            --color-error-600: #dc2626;
+            
+            /* Light Theme Colors */
+            --color-background: #0a0a0a;
+            --color-surface: #1a1a1a;
+            --color-surface-elevated: #2a2a2a;
+            --color-surface-hover: #3a3a3a;
+            
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #cccccc;
+            --color-text-tertiary: #999999;
+            --color-text-inverse: #000000;
+            
+            --color-border: #333333;
+            --color-border-focus: #3b82f6;
+            
+            --color-shadow: rgba(0, 0, 0, 0.3);
+            --color-shadow-elevated: rgba(0, 0, 0, 0.4);
+            
+            /* Typography */
+            --font-family-sans: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+            --font-family-display: 'Poppins', 'Inter', sans-serif;
+            --font-family-orbitron: 'Orbitron', 'Poppins', sans-serif;
+            
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            --font-size-6xl: 3.75rem;
+            
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+            
+            --line-height-tight: 1.25;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.75;
+            
+            --letter-spacing-tight: -0.025em;
+            --letter-spacing-normal: 0;
+            --letter-spacing-wide: 0.025em;
+            
+            /* Spacing */
+            --space-0: 0;
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+            
+            /* Border Radius */
+            --radius-none: 0;
+            --radius-sm: 0.125rem;
+            --radius-base: 0.25rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 var(--color-shadow);
+            --shadow-base: 0 1px 3px 0 var(--color-shadow), 0 1px 2px 0 var(--color-shadow);
+            --shadow-md: 0 4px 6px -1px var(--color-shadow), 0 2px 4px -1px var(--color-shadow);
+            --shadow-lg: 0 10px 15px -3px var(--color-shadow), 0 4px 6px -2px var(--color-shadow);
+            --shadow-xl: 0 20px 25px -5px var(--color-shadow), 0 10px 10px -5px var(--color-shadow);
+            --shadow-2xl: 0 25px 50px -12px var(--color-shadow);
+            
+            /* Transitions */
+            --transition-fast: 150ms ease-in-out;
+            --transition-base: 250ms ease-in-out;
+            --transition-slow: 350ms ease-in-out;
+            
+            /* Z-Index Scale */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal-backdrop: 1040;
+            --z-modal: 1050;
+            --z-popover: 1060;
+        }
+
+        /* Reset and Base Styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-tight);
+            color: var(--color-text-primary);
+        }
+
+        p {
+            margin: 0 0 var(--space-4) 0;
+        }
+
+        ul, ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            color: var(--color-primary-600);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--color-primary-700);
+        }
+
+        a:focus {
+            outline: 2px solid var(--color-border-focus);
+            outline-offset: 2px;
+        }
+
+        img, svg, video, canvas, audio, iframe, embed, object {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        img {
+            border-style: none;
+        }
+
+        svg {
+            overflow: hidden;
+            vertical-align: middle;
+        }
+
+        /* Fixed Sidebar */
+        .fixed-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 0 15px 15px 0;
+            box-shadow: 
+                0 0 20px rgba(102, 126, 234, 0.6),
+                0 0 40px rgba(102, 126, 234, 0.3),
+                0 0 60px rgba(102, 126, 234, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .sidebar-link {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            text-shadow: 0 0 4px #00f2ff, 0 0 1px #fff;
+            white-space: nowrap;
+        }
+
+        .sidebar-link:hover, .sidebar-link:focus {
+            background: linear-gradient(90deg, #00f2ff44 0%, #ff00e644 100%);
+            color: #00f2ff;
+            box-shadow: 0 0 16px #00f2ffcc, 0 2px 8px #ff00e6cc;
+        }
+
+        /* Neon EXP Bar Fixed */
+        .neon-exp-bar-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 1000;
+            background: rgba(10,10,20,0.85);
+            box-shadow: 0 2px 24px #00f2ff44, 0 0 0 2px #00f2ff55 inset;
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
+        }
+
+        .exp-bar-content {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+        }
+
+        .exp-level {
+            color: #00f2ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px #00f2ff, 0 0 2px #fff;
+        }
+
+        .exp-bar-outer {
+            width: 240px;
+            height: 18px;
+            background: #181c2a;
+            border-radius: 12px;
+            box-shadow: 0 0 12px #00f2ff55, 0 0 0 2px #00f2ff44 inset;
+            overflow: hidden;
+            margin: 0 0.5rem;
+        }
+
+        .exp-bar-inner {
+            height: 100%;
+            background: linear-gradient(90deg, #00f2ff 0%, #00ffb3 100%);
+            box-shadow: 0 0 16px #00f2ffcc, 0 0 8px #00ffb3cc;
+            border-radius: 12px 0 0 12px;
+            transition: width 0.6s cubic-bezier(.4,2,.6,1);
+        }
+
+        .exp-value {
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 0 6px #00f2ff, 0 0 2px #fff;
+        }
+
+        .stats-display {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            color: #00ffb3;
+            text-shadow: 0 0 4px #00ffb3, 0 0 1px #fff;
+            font-weight: 600;
+        }
+
+        #exp-float-container {
+            position: fixed;
+            top: 56px;
+            right: 32px;
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .exp-float {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #00ffb3;
+            text-shadow: 0 0 12px #00f2ff, 0 0 2px #fff;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(0);
+            animation: exp-float-anim 1.2s cubic-bezier(.4,2,.6,1) forwards;
+        }
+
+        @keyframes exp-float-anim {
+            0% { opacity: 0; transform: translateY(0) scale(0.8); }
+            10% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+            60% { opacity: 1; transform: translateY(-32px) scale(1); }
+            100% { opacity: 0; transform: translateY(-48px) scale(0.9); }
+        }
+
+        .levelup-screen {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            width: 350px;
+            z-index: 3000;
+            pointer-events: none;
+        }
+
+        .levelup-content {
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 3px solid #ffe066;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 0 48px #ffe066cc, 0 0 24px #ff00e6cc;
+            transform: translateX(100%);
+            animation: levelup-slide-in 0.5s ease-out forwards;
+        }
+
+        .levelup-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ffe066;
+            text-shadow: 0 0 24px #ffe066, 0 0 8px #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .levelup-subtitle {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #00f2ff;
+            text-shadow: 0 0 12px #00f2ff, 0 0 4px #fff;
+            margin-bottom: 1rem;
+        }
+
+        .levelup-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .levelup-stat {
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid #00f2ff;
+            border-radius: 0.3rem;
+            padding: 0.3rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            color: #00ffb3;
+            text-shadow: 0 0 4px #00ffb3;
+        }
+
+        @keyframes levelup-slide-in {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Welcome Message Styles */
+        .welcome-message {
+            position: fixed;
+            top: 60px;
+            left: 140px;
+            z-index: 1500;
+            pointer-events: none;
+            max-width: 360px;
+            width: 360px;
+        }
+
+        .welcome-content {
+            background: linear-gradient(135deg, rgba(24, 24, 27, 0.95) 60%, rgba(35, 39, 47, 0.95) 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 1.5rem;
+            padding: 2.4rem;
+            box-shadow: 
+                0 0 32px #00f2ff88, 
+                0 0 16px #00ffb388,
+                0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            animation: welcome-glow 3s ease-in-out infinite alternate;
+        }
+
+        .welcome-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: #00f2ff;
+            text-shadow: 0 0 16px #00f2ff, 0 0 4px #fff;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .welcome-text {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            text-shadow: 0 0 4px #00f2ff, 0 0 1px #fff;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .welcome-signature {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #00ffb3;
+            text-shadow: 0 0 12px #00ffb3, 0 0 3px #fff;
+            text-align: center;
+            margin-top: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        @keyframes welcome-glow {
+            0% {
+                box-shadow: 
+                    0 0 32px #00f2ff88, 
+                    0 0 16px #00ffb388,
+                    0 4px 16px rgba(0, 0, 0, 0.3);
+            }
+            100% {
+                box-shadow: 
+                    0 0 48px #00f2ffcc, 
+                    0 0 24px #00ffb3cc,
+                    0 0 8px #ff00e688,
+                    0 4px 16px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Responsive adjustments for welcome message */
+        @media (max-width: 768px) {
+            .welcome-message {
+                top: 100px;
+                width: 95%;
+            }
+            
+            .welcome-content {
+                padding: 1.8rem;
+            }
+            
+            .welcome-title {
+                font-size: 1.6rem;
+            }
+            
+            .welcome-text {
+                font-size: 1.1rem;
+            }
+            
+            .welcome-signature {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Main Layout */
+        .main-content {
+            margin-left: 140px;
+            padding-top: 10px;
+            min-height: 100vh;
+            background: var(--color-background);
+        }
+
+        .neon-hero-row {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 60px);
+        }
+
+        .outer-neon-border {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3px;
+            border-radius: 20px;
+            box-shadow: 
+                0 0 30px rgba(102, 126, 234, 0.6),
+                0 0 60px rgba(102, 126, 234, 0.3),
+                0 0 90px rgba(102, 126, 234, 0.1);
+            max-width: 1400px;
+            width: 100%;
+            margin: 20px auto 0;
+        }
+
+        .main-neon-layout {
+            background: var(--color-background);
+            border-radius: 17px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* Profile Info Panel */
+        .profile-info-panel {
+            height: 100%;
+            min-height: 670px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border-radius: 2.2rem 1.2rem 2.2rem 2.2rem;
+            border: 3px solid #00f2ff;
+            box-shadow: 0 0 32px #00f2ff88, 0 2px 16px #000b;
+            padding: 2.2rem 2.2rem 1.2rem 2.2rem;
+            z-index: 2;
+        }
+
+        .profile-photo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #00f2ff;
+            box-shadow: 0 0 24px #00f2ffcc, 0 0 0 8px #18181b, 0 0 0 12px #00f2ff44;
+            object-fit: cover;
+            background: #fff;
+        }
+
+        .profile-info-texts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            width: 100%;
+            align-items: center;
+        }
+
+        .profile-name, .profile-job, .profile-level {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            color: #00f2ff;
+            text-shadow: 0 0 6px #00f2ff, 0 0 1px #fff;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            text-align: center;
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-job {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-level {
+            color: #ffe066;
+            text-shadow: 0 0 3px #ffe066, 0 0 1px #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin: 0.7rem 0 0.5rem 0;
+        }
+
+        .profile-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .profile-bar {
+            width: 120px;
+            height: 16px;
+            background: #181c2a;
+            border-radius: 10px;
+            box-shadow: 0 0 4px #00f2ff33, 0 0 0 1px #00f2ff22 inset;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-bar-hp .profile-bar-fill {
+            background: linear-gradient(90deg, #ff3c3c 0%, #ffb300 100%);
+            box-shadow: 0 0 5px #ff3c3c66, 0 0 3px #ffb30066;
+        }
+
+        .profile-bar-mp .profile-bar-fill {
+            background: linear-gradient(90deg, #00c3ff 0%, #00f2ff 100%);
+            box-shadow: 0 0 5px #00c3ff66, 0 0 3px #00f2ff66;
+        }
+
+        .profile-bar-exp .profile-bar-fill {
+            background: linear-gradient(90deg, #ffe066 0%, #fffbe6 100%);
+            box-shadow: 0 0 5px #ffe06666, 0 0 3px #fffbe666;
+        }
+
+        .profile-bar-fill {
+            height: 100%;
+            border-radius: 10px 0 0 10px;
+            transition: width 0.6s cubic-bezier(.4,2,.6,1);
+        }
+
+        .profile-bar-wrap > span {
+            color: #fff;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #000;
+            margin-right: 0.5rem;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 0.7rem;
+        }
+
+        .profile-stat {
+            font-size: 0.68rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            color: #fff;
+            background: linear-gradient(90deg, #00f2ff33 0%, #ff00e633 100%);
+            border-radius: 0.7rem;
+            padding: 0.3rem 1.1rem;
+            box-shadow: 0 0 3px #00f2ff33;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #fff;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .profile-stat span {
+            color: #00f2ff;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .profile-contact-box {
+            width: 100%;
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 3px solid #00f2ff;
+            border-radius: 1.2rem 1.2rem 2.2rem 2.2rem;
+            box-shadow: 0 0 32px #00f2ff88, 0 2px 16px #000b;
+            padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+            margin-top: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-neon-title, .contact-neon-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: #00f2ff;
+            text-shadow: 0 0 6px #00f2ff, 0 0 1px #fff;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .contact-neon-info {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: #fff;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #000;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        /* Skills Panel */
+        .skills-panel {
+            height: 100%;
+            min-height: 670px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border-radius: 2.2rem 1.2rem 2.2rem 2.2rem;
+            border: 3px solid #00f2ff;
+            box-shadow: 0 0 32px #00f2ff88, 0 2px 16px #000b;
+            padding: 2.2rem 2.2rem 1.2rem 2.2rem;
+        }
+
+        .skills-title-spacer {
+            min-height: 2.2rem;
+            width: 100%;
+        }
+
+        .neon-skill-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .neon-card.skill-card {
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 16px #00f2ff44, 0 2px 8px #000b;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neon-card.skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .neon-card.skill-card:hover {
+            box-shadow: 0 0 48px #00f2ffcc, 0 4px 32px #00ffb3cc, 0 2px 16px #000b;
+            border-color: #00ffb3;
+            transform: scale(1.07) rotate(-2deg);
+        }
+
+        .neon-card.skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-img-wrap {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #00f2ff;
+            box-shadow: 0 0 12px #00f2ff44;
+        }
+
+        .skill-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .skill-name {
+            color: #fff;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #000;
+            letter-spacing: 0.02em;
+        }
+
+        .skill-stars {
+            display: flex;
+            justify-content: center;
+            gap: 0.2rem;
+        }
+
+        .star-svg {
+            width: 12px;
+            height: 12px;
+            position: relative;
+        }
+
+        .star-svg::before {
+            content: "★";
+            color: #ffd700;
+            font-size: 12px;
+            text-shadow: 0 0 5px #ffd700;
+        }
+
+        /* Projects Section */
+        .neon-section.neon-projects {
+            padding: 20px 20px;
+            margin-left: 140px;
+            margin-top: -20px;
+        }
+
+        /* Page Content Styles */
+        .page-content {
+            display: none;
+            padding: 20px;
+            margin-left: 140px;
+            min-height: calc(100vh - 60px);
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .project-container .project-title {
+            font-size: 2.5rem;
+            color: #00f2ff;
+            text-shadow: 0 0 20px #00f2ff;
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+        }
+
+        .project-container .project-subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .project-description {
+            background: linear-gradient(135deg, rgba(24, 24, 27, 0.95) 60%, rgba(35, 39, 47, 0.95) 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 32px #00f2ff88;
+        }
+
+        .description-title {
+            font-size: 1.8rem;
+            color: #00f2ff;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        .description-text {
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #00f2ff 0%, #00b3ff 100%);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 10px #00f2ff88;
+        }
+
+        .project-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 0 30px #00f2ff88;
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            color: #00f2ff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .feature-description {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .neon-title {
+            color: white;
+            font-size: 2.2rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+            letter-spacing: 0.04em;
+        }
+
+        .neon-project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .neon-card.project-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+            display: block;
+        }
+
+        .neon-card.project-card:hover {
+            box-shadow: 0 0 48px #ff00e6cc, 0 4px 32px #ffe066cc, 0 2px 16px #000b;
+            border-color: #ff00e6;
+            transform: scale(1.07) rotate(-2deg);
+        }
+
+        .project-title {
+            color: white;
+            font-size: 1.3rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #000;
+        }
+
+        .project-desc {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .project-rewards {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .exp-reward {
+            color: #00ff88;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .gold-reward {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .outer-neon-border {
+                max-width: 95vw;
+            }
+            .main-neon-layout {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .main-neon-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .profile-info-panel, .skills-panel {
+                min-height: 600px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .neon-skill-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .neon-project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .neon-skill-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .fixed-sidebar {
+                width: 80px;
+            }
+            
+            .main-content {
+                margin-left: 100px;
+            }
+            
+            .neon-section.neon-projects {
+                margin-left: 100px;
+                margin-top: -20px;
+            }
+            
+            .welcome-message {
+                left: 100px;
+                width: 300px;
+                max-width: 300px;
+            }
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--color-primary-600);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 10000;
+            font-weight: 600;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Focus styles for better accessibility */
+        .sidebar-link:focus,
+        .skill-card:focus,
+        .project-card:focus {
+            outline: 3px solid #00f2ff;
+            outline-offset: 2px;
+            border-radius: 8px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --color-text-primary: #ffffff;
+                --color-text-secondary: #ffffff;
+                --color-border: #ffffff;
+            }
+            
+            .neon-card {
+                border-width: 3px;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid #00f2ff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Error states */
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #ef4444;
+            text-align: center;
+            font-family: var(--font-family-orbitron);
+        }
+
+        /* Success states */
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #22c55e;
+            text-align: center;
+            font-family: var(--font-family-orbitron);
+        }
+
+        /* Print styles */
+        @media print {
+            .fixed-sidebar,
+            .neon-exp-bar-fixed,
+            .welcome-message,
+            .exp-float-container {
+                display: none !important;
+            }
+            
+            .main-content {
+                margin-left: 0 !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+        }
+        
+        /* Light Theme Styles */
+        body.light-theme {
+            --color-background: #f8fafc;
+            --color-surface: #ffffff;
+            --color-surface-elevated: #f1f5f9;
+            --color-surface-hover: #e2e8f0;
+            --color-text-primary: #1e293b;
+            --color-text-secondary: #475569;
+            --color-text-tertiary: #64748b;
+            --color-border: #cbd5e1;
+        }
+        
+        body.light-theme .neon-card {
+            background: linear-gradient(135deg, #ffffff 60%, #f8fafc 100%);
+            border-color: #3b82f6;
+            color: #1e293b;
+        }
+        
+        body.light-theme .welcome-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 60%, rgba(248, 250, 252, 0.95) 100%);
+            border-color: #3b82f6;
+            color: #1e293b;
+        }
+        
+        body.light-theme .welcome-title {
+            color: #3b82f6;
+            text-shadow: 0 0 16px #3b82f6, 0 0 4px #fff;
+        }
+        
+        body.light-theme .welcome-text {
+            color: #1e293b;
+            text-shadow: 0 0 4px #3b82f6, 0 0 1px #fff;
+        }
+        
+        body.light-theme .welcome-signature {
+            color: #059669;
+            text-shadow: 0 0 12px #059669, 0 0 3px #fff;
+        }
+        
+        /* Theme toggle button styles */
+        #theme-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Sidebar -->
+    <nav class="fixed-sidebar">
+      <ul class="sidebar-links">
+        <li><a href="#" class="sidebar-link active" data-page="main">Main</a></li>
+        <li><a href="/vector_search.html" class="sidebar-link">Vector Search</a></li>
+        <li><a href="/london_transport.html" class="sidebar-link">London Transport</a></li>
+                    <li><a href="#" class="sidebar-link" data-page="zoho-email">Zoho Email</a></li>
+            <li><a href="#" class="sidebar-link" data-page="ai-background">AI Background</a></li>
+            <li><a href="#" class="sidebar-link" data-page="healthcare-clustering">Healthcare</a></li>
+            <li><a href="#" class="sidebar-link" data-page="amazon-review">Amazon Review</a></li>
+            <li><a href="#" class="sidebar-link" data-page="azure-compendium">Azure Guide</a></li>
+        <li><button id="theme-toggle" class="sidebar-link" style="background: none; border: none; cursor: pointer; font-family: inherit; color: inherit;">🌙</button></li>
+      </ul>
+    </nav>
+    
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Neon EXP Bar (고정) -->
+    <div id="exp-bar-fixed" class="neon-exp-bar-fixed">
+      <div class="exp-bar-content">
+        <span class="exp-level">Lv. <span id="exp-level">1</span></span>
+        <div class="exp-bar-outer">
+          <div class="exp-bar-inner" id="exp-bar-inner" style="width:0%"></div>
+        </div>
+        <span class="exp-value"><span id="exp-now">0</span> / <span id="exp-max">100</span> EXP</span>
+        <div class="stats-display">
+          <span class="stat-item">HP: <span id="stat-hp">100</span></span>
+          <span class="stat-item">MP: <span id="stat-mp">50</span></span>
+          <span class="stat-item">STR: <span id="stat-str">10</span></span>
+          <span class="stat-item">DEX: <span id="stat-dex">8</span></span>
+          <span class="stat-item">INT: <span id="stat-int">12</span></span>
+          <span class="stat-item">CHA: <span id="stat-cha">9</span></span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Welcome Message -->
+    <div class="welcome-message">
+      <div class="welcome-content">
+        <div class="welcome-title">Welcome to Sanghoon Pai's Digital Realm!</div>
+        <div class="welcome-text">
+          Greetings, traveler! You've entered the neon-lit domain of a developer who's constantly leveling up their web development skills. 
+          This website is currently under active development - think of it as a work-in-progress masterpiece where the developer is grinding 
+          through web app tutorials and gaining experience points!
+        </div>
+        <div class="welcome-text">
+          For now, only the main page and quest (portfolio) links are functional, but feel free to explore and enjoy the interactive features 
+          available! The developer has ambitious plans to add many exciting new features including SQL integration, PowerBI dashboards, 
+          customer SAP systems, and much more. Stay tuned for future updates!
+        </div>
+        <div class="welcome-signature">~ Happy Coding & Leveling Up ~</div>
+      </div>
+    </div>
+    <!-- EXP 획득 애니메이션 표시용 -->
+    <div id="exp-float-container"></div>
+    
+    <!-- Neon Gamer HUD -->
+    <header class="neon-hud">
+      <div class="hud-info">
+        <!-- 모든 텍스트(닉네임, 레벨, HP, MP, EXP) 제거 -->
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content neon-main" role="main">
+        <!-- Main Page -->
+        <div id="page-main" class="page-content active">
+            <!-- Neon Hero Section -->
+            <section class="neon-hero-row">
+          <div class="outer-neon-border">
+            <div class="main-neon-layout">
+              <div class="profile-info-panel">
+                <div class="profile-photo-wrap">
+                  <img src="sample/images/KakaoTalk_20220610_132225838.jpg" alt="Sanghoon Pai" class="profile-photo" loading="lazy" decoding="async">
+                </div>
+                <div class="profile-info-texts">
+                  <div class="profile-name">Sanghoon Pai</div>
+                  <div class="profile-job">Data Analyst</div>
+                  <div class="profile-level">Lv. 27</div>
+                  <div class="profile-bars">
+                    <div class="profile-bar-wrap"><span>HP</span><div class="profile-bar profile-bar-hp"><div class="profile-bar-fill" style="width:90%"></div></div></div>
+                    <div class="profile-bar-wrap"><span>MP</span><div class="profile-bar profile-bar-mp"><div class="profile-bar-fill" style="width:60%"></div></div></div>
+                    <div class="profile-bar-wrap"><span>EXP</span><div class="profile-bar profile-bar-exp"><div class="profile-bar-fill" style="width:40%"></div></div></div>
+                  </div>
+                  <div class="profile-stats">
+                    <div class="profile-stat"><span>STR</span> 8</div>
+                    <div class="profile-stat"><span>DEX</span> 7</div>
+                    <div class="profile-stat"><span>INT</span> 10</div>
+                    <div class="profile-stat"><span>CHA</span> 9</div>
+                  </div>
+                </div>
+                <div class="profile-contact-box">
+                  <div class="contact-neon-title">Contact</div>
+                  <div class="contact-neon-info">Shadow89xxx@gmail.com</div>
+                  <div class="contact-neon-info">(916)-662-2393</div>
+                  <div class="contact-neon-info">Rowland Heights, CA</div>
+                  <div class="contact-neon-info">www.linkedin.com/in/sanghoon-pai-437a63164/</div>
+                  <div class="contact-neon-info">https://github.com/shadow89x/</div>
+                </div>
+                <div class="skills-title-spacer"></div>
+              </div>
+              <div class="skills-panel">
+                <div class="skills-neon-title">Skills</div>
+                <div class="neon-skill-grid">
+                  <!-- Python Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="Python skill level 3">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/python.jpg" alt="Python Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">Python</div>
+                  </div>
+                  <!-- SQL Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="SQL skill level 2">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/sql.jpg" alt="SQL Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">SQL</div>
+                  </div>
+                  <!-- PowerBI Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="PowerBI skill level 2">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/powerbi.jpg" alt="PowerBI Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">PowerBI</div>
+                  </div>
+                  <!-- Excel Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="Excel skill level 2">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/excel.jpg" alt="Excel Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">Excel</div>
+                  </div>
+                  <!-- PowerPoint Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="PowerPoint skill level 1">
+                    <div class="skill-stars"><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/powerpoint.jpg" alt="PowerPoint Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">PowerPoint</div>
+                  </div>
+                  <!-- HTML/CSS Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="HTML/CSS skill level 1">
+                    <div class="skill-stars"><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/html-css.jpg" alt="HTML CSS Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">HTML/CSS</div>
+                  </div>
+                  <!-- JavaScript Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="JavaScript skill level 1">
+                    <div class="skill-stars"><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/javascript.jpg" alt="JavaScript Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">JavaScript</div>
+                  </div>
+                  <!-- Git/GitHub Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="Git/GitHub skill level 2">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/git.jpg" alt="Git Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">Git/GitHub</div>
+                  </div>
+                  <!-- QuickBooks Card -->
+                  <div class="neon-card skill-card" tabindex="0" role="button" aria-label="QuickBooks skill level 3">
+                    <div class="skill-stars"><span class="star-svg"></span><span class="star-svg"></span><span class="star-svg"></span></div>
+                    <div class="skill-img-wrap"><img src="sample/images/quickbooks.jpg" alt="QuickBooks Character" loading="lazy" decoding="async"></div>
+                    <div class="skill-name">QuickBooks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="neon-section neon-projects">
+            <h2 class="neon-title">Quests (Projects)</h2>
+            
+            <!-- Search and Filter Controls -->
+            <div class="project-controls" style="max-width: 800px; margin: 0 auto 2rem; display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap;">
+                <div class="search-container" style="position: relative; flex: 1; min-width: 250px;">
+                    <input type="text" id="project-search" placeholder="Search projects..." 
+                           style="width: 100%; padding: 0.8rem 1rem; background: rgba(24, 24, 27, 0.8); border: 2px solid #00f2ff; border-radius: 8px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1rem; outline: none; transition: all 0.3s ease;">
+                    <div class="search-icon" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: #00f2ff; pointer-events: none;">🔍</div>
+                </div>
+                <select id="project-filter" style="padding: 0.8rem 1rem; background: rgba(24, 24, 27, 0.8); border: 2px solid #00f2ff; border-radius: 8px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1rem; outline: none; cursor: pointer;">
+                    <option value="all">All Projects</option>
+                    <option value="ai">AI/ML</option>
+                    <option value="automation">Automation</option>
+                    <option value="analysis">Data Analysis</option>
+                    <option value="web">Web Development</option>
+                </select>
+            </div>
+            
+            <div class="neon-project-grid" id="project-grid">
+                <a href="https://github.com/shadow89x/zoho_email_automation_and_data_anonymization" class="neon-card project-card" target="_blank" data-exp="150" data-gold="80" data-category="automation" data-tags="email,automation,privacy,analytics">
+                  <div class="project-title">📧 Zoho Email Automation & Data Anonymization</div>
+                  <div class="project-desc">Enterprise-grade offline email analytics and customer management pipeline focused on privacy, scalability, and multi-language support.</div>
+                  <div class="project-rewards"><span class="exp-reward">+150 EXP</span> | <span class="gold-reward">+80 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Automated-Image-Background-Removal-and-Regeneration-using-Azure-CV-and-OpenAI-DallE2" class="neon-card project-card" target="_blank" data-exp="120" data-gold="60" data-category="ai" data-tags="ai,image,azure,openai,dalle">
+                  <div class="project-title">🎨 AI-Powered Background Regeneration</div>
+                  <div class="project-desc">Remove backgrounds using Azure Computer Vision and regenerate new ones via OpenAI DALL·E 2.</div>
+                  <div class="project-rewards"><span class="exp-reward">+120 EXP</span> | <span class="gold-reward">+60 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/OpenAI_Vectorized_Image_Search" class="neon-card project-card" target="_blank" data-exp="110" data-gold="55" data-category="ai" data-tags="ai,vector,search,azure,openai">
+                  <div class="project-title">🔍 Vector-Based Image & Text Search</div>
+                  <div class="project-desc">Vector similarity search using Azure CV embeddings to find the most similar image or match text+image queries.</div>
+                  <div class="project-rewards"><span class="exp-reward">+110 EXP</span> | <span class="gold-reward">+55 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Healthcare_Documents_Clustering_With_Pytesseract_OCR" class="neon-card project-card" target="_blank" data-exp="100" data-gold="50" data-category="ai" data-tags="ai,ocr,clustering,healthcare">
+                  <div class="project-title">🩺 Healthcare Document Clustering</div>
+                  <div class="project-desc">OCR-based text extraction from scanned PDFs and KMeans clustering to organize medical documentation.</div>
+                  <div class="project-rewards"><span class="exp-reward">+100 EXP</span> | <span class="gold-reward">+50 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Amazon_review_analysis" class="neon-card project-card" target="_blank" data-exp="90" data-gold="45" data-category="analysis" data-tags="nlp,sentiment,analysis,amazon">
+                  <div class="project-title">💬 Amazon Review NLP Analysis</div>
+                  <div class="project-desc">Text mining and sentiment analysis on Amazon reviews with Python NLP and visualization tools.</div>
+                  <div class="project-rewards"><span class="exp-reward">+90 EXP</span> | <span class="gold-reward">+45 Gold</span></div>
+                </a>
+                <a href="https://github.com/shadow89x/Microsoft-Azure-Resource-Compendium" class="neon-card project-card" target="_blank" data-exp="80" data-gold="40" data-category="web" data-tags="azure,cloud,documentation">
+                  <div class="project-title">☁️ Microsoft Azure Resource Compendium</div>
+                  <div class="project-desc">A well-organized reference guide to Azure services, deployments, automation, and architecture.</div>
+                  <div class="project-rewards"><span class="exp-reward">+80 EXP</span> | <span class="gold-reward">+40 Gold</span></div>
+                </a>
+            </div>
+        </div>
+        </section>
+        </div>
+
+
+
+        <!-- Zoho Email Project Page -->
+        <div id="page-zoho-email" class="page-content">
+            <div class="project-container">
+                <h1 class="project-title">📧 Zoho Email Automation & Data Anonymization</h1>
+                <p class="project-subtitle">Enterprise-grade email analytics and customer management</p>
+                
+                <div class="iframe-controls">
+                    <button class="iframe-control-btn" onclick="toggleIframeView('zoho-email')">
+                        <span class="btn-text">🔍 View GitHub Repository</span>
+                        <span class="btn-text-hidden">📋 Show Description</span>
+                    </button>
+                </div>
+                
+                <div id="zoho-email-description" class="project-description">
+                    <h2 class="description-title">Project Overview</h2>
+                    <p class="description-text">
+                        Enterprise-grade offline email analytics and customer management pipeline focused on privacy, scalability, 
+                        and multi-language support. This system processes large volumes of email data while maintaining data privacy.
+                    </p>
+                    <p class="description-text">
+                        The pipeline includes automated data collection, anonymization processes, and comprehensive analytics 
+                        for customer insights and business intelligence.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Zoho API</span>
+                        <span class="tech-tag">Data Anonymization</span>
+                        <span class="tech-tag">Analytics</span>
+                        <span class="tech-tag">Privacy</span>
+                    </div>
+                </div>
+                
+                <div id="zoho-email-iframe" class="project-iframe" style="display: none;">
+                    <div class="github-placeholder">
+                        <div class="github-content">
+                            <h3>📁 Zoho Email Automation Repository</h3>
+                            <p>GitHub에서 직접 확인하시려면 아래 링크를 클릭하세요:</p>
+                            <a href="https://github.com/shadow89x/zoho_email_automation_and_data_anonymization" 
+                               target="_blank" class="github-link">
+                                🔗 GitHub 저장소 열기
+                            </a>
+                            <div class="github-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">🔒</span>
+                                    <span>Data Anonymization</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">📧</span>
+                                    <span>Email Processing</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">📊</span>
+                                    <span>Analytics Pipeline</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Background Project Page -->
+        <div id="page-ai-background" class="page-content">
+            <div class="project-container">
+                <h1 class="project-title">🎨 AI-Powered Background Regeneration</h1>
+                <p class="project-subtitle">Remove backgrounds using Azure CV and regenerate with OpenAI DALL·E 2</p>
+                
+                <div class="iframe-controls">
+                    <button class="iframe-control-btn" onclick="toggleIframeView('ai-background')">
+                        <span class="btn-text">🔍 View GitHub Repository</span>
+                        <span class="btn-text-hidden">📋 Show Description</span>
+                    </button>
+                </div>
+                
+                <div id="ai-background-description" class="project-description">
+                    <h2 class="description-title">Project Overview</h2>
+                    <p class="description-text">
+                        Advanced image processing system that removes backgrounds using Azure Computer Vision and regenerates 
+                        new ones via OpenAI DALL·E 2. This creates seamless background replacement with AI-generated content.
+                    </p>
+                    <p class="description-text">
+                        The system combines multiple AI services to provide professional-quality image editing capabilities 
+                        with minimal user input and maximum creative potential.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Azure Computer Vision</span>
+                        <span class="tech-tag">OpenAI DALL·E 2</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Image Processing</span>
+                        <span class="tech-tag">AI/ML</span>
+                    </div>
+                </div>
+                
+                <div id="ai-background-iframe" class="project-iframe" style="display: none;">
+                    <div class="github-placeholder">
+                        <div class="github-content">
+                            <h3>🎨 AI Background Regeneration Repository</h3>
+                            <p>GitHub에서 직접 확인하시려면 아래 링크를 클릭하세요:</p>
+                            <a href="https://github.com/shadow89x/Automated-Image-Background-Removal-and-Regeneration-using-Azure-CV-and-OpenAI-DallE2" 
+                               target="_blank" class="github-link">
+                                🔗 GitHub 저장소 열기
+                            </a>
+                            <div class="github-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">🎨</span>
+                                    <span>Background Removal</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✨</span>
+                                    <span>AI Generation</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">🔧</span>
+                                    <span>Azure CV Integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Healthcare Clustering Project Page -->
+        <div id="page-healthcare-clustering" class="page-content">
+            <div class="project-container">
+                <h1 class="project-title">🩺 Healthcare Document Clustering</h1>
+                <p class="project-subtitle">OCR-based text extraction and KMeans clustering for medical documentation</p>
+                
+                <div class="iframe-controls">
+                    <button class="iframe-control-btn" onclick="toggleIframeView('healthcare-clustering')">
+                        <span class="btn-text">🔍 View GitHub Repository</span>
+                        <span class="btn-text-hidden">📋 Show Description</span>
+                    </button>
+                </div>
+                
+                <div id="healthcare-clustering-description" class="project-description">
+                    <h2 class="description-title">Project Overview</h2>
+                    <p class="description-text">
+                        OCR-based text extraction from scanned PDFs and KMeans clustering to organize medical documentation. 
+                        This system helps healthcare providers efficiently categorize and manage large volumes of medical records.
+                    </p>
+                    <p class="description-text">
+                        The solution combines optical character recognition with machine learning clustering algorithms 
+                        to automatically organize and categorize healthcare documents.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">PyTesseract OCR</span>
+                        <span class="tech-tag">KMeans Clustering</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Healthcare</span>
+                        <span class="tech-tag">Document Processing</span>
+                    </div>
+                </div>
+                
+                <div id="healthcare-clustering-iframe" class="project-iframe" style="display: none;">
+                    <div class="github-placeholder">
+                        <div class="github-content">
+                            <h3>🩺 Healthcare Document Clustering Repository</h3>
+                            <p>GitHub에서 직접 확인하시려면 아래 링크를 클릭하세요:</p>
+                            <a href="https://github.com/shadow89x/Healthcare_Documents_Clustering_With_Pytesseract_OCR" 
+                               target="_blank" class="github-link">
+                                🔗 GitHub 저장소 열기
+                            </a>
+                            <div class="github-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">📄</span>
+                                    <span>OCR Processing</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">📊</span>
+                                    <span>Smart Clustering</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">🏥</span>
+                                    <span>Healthcare Focus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amazon Review Project Page -->
+        <div id="page-amazon-review" class="page-content">
+            <div class="project-container">
+                <h1 class="project-title">💬 Amazon Review NLP Analysis</h1>
+                <p class="project-subtitle">Text mining and sentiment analysis on Amazon reviews</p>
+                
+                <div class="iframe-controls">
+                    <button class="iframe-control-btn" onclick="toggleIframeView('amazon-review')">
+                        <span class="btn-text">🔍 View GitHub Repository</span>
+                        <span class="btn-text-hidden">📋 Show Description</span>
+                    </button>
+                </div>
+                
+                <div id="amazon-review-description" class="project-description">
+                    <h2 class="description-title">Project Overview</h2>
+                    <p class="description-text">
+                        Comprehensive text mining and sentiment analysis on Amazon reviews with Python NLP and visualization tools. 
+                        This project provides deep insights into customer sentiment and product performance.
+                    </p>
+                    <p class="description-text">
+                        The analysis includes sentiment classification, keyword extraction, and trend analysis 
+                        to help businesses understand customer feedback and improve products.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python NLP</span>
+                        <span class="tech-tag">Sentiment Analysis</span>
+                        <span class="tech-tag">Text Mining</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Amazon Reviews</span>
+                    </div>
+                </div>
+                
+                <div id="amazon-review-iframe" class="project-iframe" style="display: none;">
+                    <div class="github-placeholder">
+                        <div class="github-content">
+                            <h3>💬 Amazon Review NLP Analysis Repository</h3>
+                            <p>GitHub에서 직접 확인하시려면 아래 링크를 클릭하세요:</p>
+                            <a href="https://github.com/shadow89x/Amazon_review_analysis" 
+                               target="_blank" class="github-link">
+                                🔗 GitHub 저장소 열기
+                            </a>
+                            <div class="github-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">😊</span>
+                                    <span>Sentiment Analysis</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">🔍</span>
+                                    <span>Keyword Extraction</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">📈</span>
+                                    <span>Trend Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Azure Compendium Project Page -->
+        <div id="page-azure-compendium" class="page-content">
+            <div class="project-container">
+                <h1 class="project-title">☁️ Microsoft Azure Resource Compendium</h1>
+                <p class="project-subtitle">Well-organized reference guide to Azure services and architecture</p>
+                
+                <div class="iframe-controls">
+                    <button class="iframe-control-btn" onclick="toggleIframeView('azure-compendium')">
+                        <span class="btn-text">🔍 View GitHub Repository</span>
+                        <span class="btn-text-hidden">📋 Show Description</span>
+                    </button>
+                </div>
+                
+                <div id="azure-compendium-description" class="project-description">
+                    <h2 class="description-title">Project Overview</h2>
+                    <p class="description-text">
+                        A comprehensive and well-organized reference guide to Azure services, deployments, automation, and architecture. 
+                        This compendium serves as a complete resource for Azure cloud computing and development.
+                    </p>
+                    <p class="description-text">
+                        The guide covers everything from basic Azure services to advanced deployment strategies, 
+                        providing practical examples and best practices for cloud development.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Microsoft Azure</span>
+                        <span class="tech-tag">Cloud Computing</span>
+                        <span class="tech-tag">Documentation</span>
+                        <span class="tech-tag">Architecture</span>
+                        <span class="tech-tag">DevOps</span>
+                    </div>
+                </div>
+                
+                <div id="azure-compendium-iframe" class="project-iframe" style="display: none;">
+                    <div class="github-placeholder">
+                        <div class="github-content">
+                            <h3>☁️ Azure Resource Compendium Repository</h3>
+                            <p>GitHub에서 직접 확인하시려면 아래 링크를 클릭하세요:</p>
+                            <a href="https://github.com/shadow89x/Microsoft-Azure-Resource-Compendium" 
+                               target="_blank" class="github-link">
+                                🔗 GitHub 저장소 열기
+                            </a>
+                            <div class="github-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">📚</span>
+                                    <span>Comprehensive Guide</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">🏗️</span>
+                                    <span>Architecture Patterns</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">⚙️</span>
+                                    <span>Automation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // EXP System with Local Storage
+        class GameSystem {
+            constructor() {
+                this.currentLevel = parseInt(localStorage.getItem('currentLevel')) || 1;
+                this.currentExp = parseInt(localStorage.getItem('currentExp')) || 0;
+                this.maxExp = parseInt(localStorage.getItem('maxExp')) || 100;
+                this.totalExp = parseInt(localStorage.getItem('totalExp')) || 0;
+                
+                this.playerStats = {
+                    hp: parseInt(localStorage.getItem('playerHp')) || 100,
+                    mp: parseInt(localStorage.getItem('playerMp')) || 50,
+                    str: parseInt(localStorage.getItem('playerStr')) || 10,
+                    dex: parseInt(localStorage.getItem('playerDex')) || 8,
+                    int: parseInt(localStorage.getItem('playerInt')) || 12,
+                    cha: parseInt(localStorage.getItem('playerCha')) || 9
+                };
+                
+                this.achievements = JSON.parse(localStorage.getItem('achievements')) || [];
+                this.lastScrollY = 0;
+                this.isInitialized = false;
+                
+                this.init();
+            }
+            
+            init() {
+                this.updateExpDisplay();
+                this.updateStatsDisplay();
+                this.setupEventListeners();
+                this.checkAchievements();
+                this.isInitialized = true;
+                
+                // Starting bonus only on first visit
+                if (!localStorage.getItem('hasVisited')) {
+                    this.gainExp(10);
+                    localStorage.setItem('hasVisited', 'true');
+                }
+            }
+            
+            saveToStorage() {
+                localStorage.setItem('currentLevel', this.currentLevel);
+                localStorage.setItem('currentExp', this.currentExp);
+                localStorage.setItem('maxExp', this.maxExp);
+                localStorage.setItem('totalExp', this.totalExp);
+                localStorage.setItem('playerHp', this.playerStats.hp);
+                localStorage.setItem('playerMp', this.playerStats.mp);
+                localStorage.setItem('playerStr', this.playerStats.str);
+                localStorage.setItem('playerDex', this.playerStats.dex);
+                localStorage.setItem('playerInt', this.playerStats.int);
+                localStorage.setItem('playerCha', this.playerStats.cha);
+                localStorage.setItem('achievements', JSON.stringify(this.achievements));
+            }
+            
+            updateExpDisplay() {
+                const expPercentage = (this.currentExp / this.maxExp) * 100;
+                const expLevelEl = document.getElementById('exp-level');
+                const expNowEl = document.getElementById('exp-now');
+                const expMaxEl = document.getElementById('exp-max');
+                const expBarInnerEl = document.getElementById('exp-bar-inner');
+                
+                if (expLevelEl) expLevelEl.textContent = this.currentLevel;
+                if (expNowEl) expNowEl.textContent = this.currentExp;
+                if (expMaxEl) expMaxEl.textContent = this.maxExp;
+                if (expBarInnerEl) expBarInnerEl.style.width = expPercentage + '%';
+            }
+            
+            updateStatsDisplay() {
+                const statElements = {
+                    'stat-hp': this.playerStats.hp,
+                    'stat-mp': this.playerStats.mp,
+                    'stat-str': this.playerStats.str,
+                    'stat-dex': this.playerStats.dex,
+                    'stat-int': this.playerStats.int,
+                    'stat-cha': this.playerStats.cha
+                };
+                
+                Object.entries(statElements).forEach(([id, value]) => {
+                    const element = document.getElementById(id);
+                    if (element) element.textContent = value;
+                });
+            }
+            
+            levelUp() {
+                this.currentLevel++;
+                this.maxExp = Math.floor(this.maxExp * 1.2);
+                
+                // 스탯 증가량 계산
+                const gains = {
+                    hp: Math.floor(Math.random() * 5) + 5,
+                    mp: Math.floor(Math.random() * 3) + 3,
+                    str: Math.floor(Math.random() * 2) + 1,
+                    dex: Math.floor(Math.random() * 2) + 1,
+                    int: Math.floor(Math.random() * 2) + 1,
+                    cha: Math.floor(Math.random() * 2) + 1
+                };
+                
+                // 스탯 적용
+                Object.entries(gains).forEach(([stat, gain]) => {
+                    this.playerStats[stat] += gain;
+                });
+                
+                this.showLevelUpScreen(gains);
+                this.updateExpDisplay();
+                this.updateStatsDisplay();
+                this.saveToStorage();
+                this.checkAchievements();
+            }
+            
+            gainExp(amount) {
+                this.currentExp += amount;
+                this.totalExp += amount;
+                this.showExpFloat('+' + amount + ' EXP!');
+                
+                if (this.currentExp >= this.maxExp) {
+                    this.currentExp = this.currentExp - this.maxExp;
+                    this.levelUp();
+                } else {
+                    this.updateExpDisplay();
+                }
+                
+                this.saveToStorage();
+            }
+            
+            showExpFloat(text) {
+                const container = document.getElementById('exp-float-container');
+                if (!container) return;
+                
+                const floatElement = document.createElement('div');
+                floatElement.className = 'exp-float';
+                floatElement.textContent = text;
+                
+                container.appendChild(floatElement);
+                setTimeout(() => {
+                    if (floatElement.parentNode) {
+                        floatElement.remove();
+                    }
+                }, 1200);
+            }
+            
+            showLevelUpScreen(gains) {
+                const levelUpScreen = document.createElement('div');
+                levelUpScreen.className = 'levelup-screen';
+                levelUpScreen.innerHTML = `
+                    <div class="levelup-content">
+                        <div class="levelup-title">LEVEL UP!</div>
+                        <div class="levelup-subtitle">Reached Level ${this.currentLevel}!</div>
+                        <div class="levelup-stats">
+                            <div class="levelup-stat">HP +${gains.hp}</div>
+                            <div class="levelup-stat">MP +${gains.mp}</div>
+                            <div class="levelup-stat">STR +${gains.str}</div>
+                            <div class="levelup-stat">DEX +${gains.dex}</div>
+                            <div class="levelup-stat">INT +${gains.int}</div>
+                            <div class="levelup-stat">CHA +${gains.cha}</div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(levelUpScreen);
+                
+                setTimeout(() => {
+                    if (levelUpScreen.parentNode) {
+                        levelUpScreen.remove();
+                    }
+                }, 3000);
+            }
+            
+            checkAchievements() {
+                const newAchievements = [];
+                
+                // 레벨 업 업적
+                if (this.currentLevel >= 5 && !this.achievements.includes('level5')) {
+                    newAchievements.push({ id: 'level5', title: 'Rising Star', description: 'Reached Level 5!', exp: 50 });
+                }
+                if (this.currentLevel >= 10 && !this.achievements.includes('level10')) {
+                    newAchievements.push({ id: 'level10', title: 'Veteran', description: 'Reached Level 10!', exp: 100 });
+                }
+                if (this.currentLevel >= 20 && !this.achievements.includes('level20')) {
+                    newAchievements.push({ id: 'level20', title: 'Master', description: 'Reached Level 20!', exp: 200 });
+                }
+                
+                // 총 경험치 업적
+                if (this.totalExp >= 1000 && !this.achievements.includes('exp1000')) {
+                    newAchievements.push({ id: 'exp1000', title: 'Experience Hunter', description: 'Gained 1000 total EXP!', exp: 75 });
+                }
+                
+                // 새로운 업적이 있으면 표시
+                newAchievements.forEach(achievement => {
+                    this.achievements.push(achievement.id);
+                    this.showAchievement(achievement);
+                    this.gainExp(achievement.exp);
+                });
+            }
+            
+            showAchievement(achievement) {
+                const achievementScreen = document.createElement('div');
+                achievementScreen.className = 'levelup-screen';
+                achievementScreen.style.right = '20px';
+                achievementScreen.style.top = '120px';
+                achievementScreen.innerHTML = `
+                    <div class="levelup-content" style="background: linear-gradient(135deg, #18181b 60%, #23272f 100%); border-color: #ffd700;">
+                        <div class="levelup-title" style="color: #ffd700;">🏆 ACHIEVEMENT!</div>
+                        <div class="levelup-subtitle">${achievement.title}</div>
+                        <div style="color: #fff; margin: 1rem 0;">${achievement.description}</div>
+                        <div style="color: #00ffb3; font-weight: bold;">+${achievement.exp} EXP</div>
+                    </div>
+                `;
+                
+                document.body.appendChild(achievementScreen);
+                
+                setTimeout(() => {
+                    if (achievementScreen.parentNode) {
+                        achievementScreen.remove();
+                    }
+                }, 4000);
+            }
+            
+            setupEventListeners() {
+                // 스크롤 시 경험치 +4 (100px마다)
+                window.addEventListener('scroll', () => {
+                    const now = Math.floor(window.scrollY/100);
+                    if(now !== this.lastScrollY) {
+                        this.gainExp(4);
+                        this.lastScrollY = now;
+                    }
+                });
+
+                // 클릭 시 경험치 +5
+                window.addEventListener('click', (e) => {
+                    // 프로젝트 카드 클릭 시 추가 경험치
+                    if (e.target.closest('.project-card')) {
+                        const card = e.target.closest('.project-card');
+                        const expReward = parseInt(card.dataset.exp) || 0;
+                        this.gainExp(5 + expReward);
+                    } else {
+                        this.gainExp(5);
+                    }
+                });
+                
+                // 키보드 네비게이션
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        const focusedElement = document.activeElement;
+                        if (focusedElement && focusedElement.classList.contains('skill-card')) {
+                            this.gainExp(10);
+                        }
+                    }
+                });
+                
+                // 스킬 카드 클릭 이벤트
+                document.querySelectorAll('.skill-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        this.gainExp(10);
+                    });
+                });
+            }
+        }
+        
+        // Initialize game system
+        let gameSystem;
+        document.addEventListener('DOMContentLoaded', () => {
+            gameSystem = new GameSystem();
+        });
+        
+        // Service Worker for PWA support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+        
+        // Project Search and Filter System
+        class ProjectSearch {
+            constructor() {
+                this.searchInput = document.getElementById('project-search');
+                this.filterSelect = document.getElementById('project-filter');
+                this.projectGrid = document.getElementById('project-grid');
+                this.projects = Array.from(document.querySelectorAll('.project-card'));
+                
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                if (this.searchInput) {
+                    this.searchInput.addEventListener('input', () => this.filterProjects());
+                }
+                if (this.filterSelect) {
+                    this.filterSelect.addEventListener('change', () => this.filterProjects());
+                }
+            }
+            
+            filterProjects() {
+                const searchTerm = this.searchInput ? this.searchInput.value.toLowerCase() : '';
+                const filterCategory = this.filterSelect ? this.filterSelect.value : 'all';
+                
+                this.projects.forEach(project => {
+                    const title = project.querySelector('.project-title').textContent.toLowerCase();
+                    const description = project.querySelector('.project-desc').textContent.toLowerCase();
+                    const tags = project.dataset.tags ? project.dataset.tags.toLowerCase() : '';
+                    const category = project.dataset.category || '';
+                    
+                    const matchesSearch = !searchTerm || 
+                        title.includes(searchTerm) || 
+                        description.includes(searchTerm) || 
+                        tags.includes(searchTerm);
+                    
+                    const matchesFilter = filterCategory === 'all' || category === filterCategory;
+                    
+                    if (matchesSearch && matchesFilter) {
+                        project.style.display = 'block';
+                        project.style.animation = 'fadeIn 0.3s ease-in-out';
+                    } else {
+                        project.style.display = 'none';
+                    }
+                });
+                
+                this.updateResultsCount();
+            }
+            
+            updateResultsCount() {
+                const visibleProjects = this.projects.filter(project => 
+                    project.style.display !== 'none'
+                );
+                
+                // 결과 수 표시 (선택사항)
+                const resultsInfo = document.getElementById('results-info');
+                if (!resultsInfo) {
+                    const infoDiv = document.createElement('div');
+                    infoDiv.id = 'results-info';
+                    infoDiv.style.cssText = 'text-align: center; color: #00f2ff; font-family: "Orbitron", sans-serif; margin: 1rem 0; font-size: 0.9rem;';
+                    this.projectGrid.parentNode.insertBefore(infoDiv, this.projectGrid);
+                }
+                
+                const infoDiv = document.getElementById('results-info');
+                infoDiv.textContent = `Showing ${visibleProjects.length} of ${this.projects.length} projects`;
+            }
+        }
+        
+        // Initialize project search
+        document.addEventListener('DOMContentLoaded', () => {
+            new ProjectSearch();
+            new ThemeManager();
+        });
+        
+        // Theme Management System
+        class ThemeManager {
+            constructor() {
+                this.themeToggle = document.getElementById('theme-toggle');
+                this.currentTheme = localStorage.getItem('theme') || 'dark';
+                
+                this.init();
+            }
+            
+            init() {
+                this.applyTheme(this.currentTheme);
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                if (this.themeToggle) {
+                    this.themeToggle.addEventListener('click', () => this.toggleTheme());
+                }
+            }
+            
+            toggleTheme() {
+                const newTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+                this.applyTheme(newTheme);
+                this.currentTheme = newTheme;
+                localStorage.setItem('theme', newTheme);
+            }
+            
+            applyTheme(theme) {
+                const body = document.body;
+                const toggleButton = this.themeToggle;
+                
+                if (theme === 'light') {
+                    body.classList.add('light-theme');
+                    if (toggleButton) toggleButton.textContent = '🌙';
+                } else {
+                    body.classList.remove('light-theme');
+                    if (toggleButton) toggleButton.textContent = '☀️';
+                }
+            }
+        }
+        
+        // Add fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Page Navigation System
+        class PageNavigator {
+            constructor() {
+                this.currentPage = 'main';
+                this.sidebarLinks = document.querySelectorAll('.sidebar-link[data-page]');
+                this.pages = document.querySelectorAll('.page-content');
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupEventListeners();
+                this.showPage('main');
+            }
+            
+            setupEventListeners() {
+                this.sidebarLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const href = link.getAttribute('href');
+                        const dataPage = link.getAttribute('data-page');
+                        
+                        // If it's a regular link (like vector_search.html), let it navigate normally
+                        if (href && href !== '#') {
+                            // Gain EXP for navigation
+                            if (gameSystem) {
+                                gameSystem.gainExp(5);
+                            }
+                            return; // Let the link work normally
+                        }
+                        
+                        // If it's a data-page link, handle it with our page system
+                        if (dataPage) {
+                            e.preventDefault();
+                            this.showPage(dataPage);
+                            
+                            // Add active class to clicked link
+                            this.sidebarLinks.forEach(l => l.classList.remove('active'));
+                            link.classList.add('active');
+                            
+                            // Gain EXP for navigation
+                            if (gameSystem) {
+                                gameSystem.gainExp(5);
+                            }
+                        }
+                    });
+                });
+            }
+            
+            showPage(pageId) {
+                // Hide all pages
+                this.pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show selected page
+                const targetPage = document.getElementById(`page-${pageId}`);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    this.currentPage = pageId;
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                }
+            }
+        }
+        
+        // Initialize page navigator
+        document.addEventListener('DOMContentLoaded', () => {
+            new PageNavigator();
+        });
+    </script>
+</body>
+</html> 
