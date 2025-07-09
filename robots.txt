@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://shadow89x.github.io/optical_warehouse_web/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1 

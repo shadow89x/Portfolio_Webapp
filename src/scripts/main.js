@@ -767,3 +767,28 @@ window.addEventListener('DOMContentLoaded', () => {
   updateExpBar();
   gainExp(10);
 }); 
+
+// ========================================
+// Iframe Toggle Function
+// ========================================
+
+// Iframe Toggle Function
+function toggleIframeView(projectId) {
+  const description = document.getElementById(projectId + '-description');
+  const iframe = document.getElementById(projectId + '-iframe');
+  const button = event.target.closest('.iframe-control-btn');
+  
+  if (description && iframe && button) {
+    if (description.style.display === 'none') {
+      // Show description
+      description.style.display = 'block';
+      iframe.style.display = 'none';
+      button.classList.remove('showing-iframe');
+    } else {
+      // Show iframe
+      description.style.display = 'none';
+      iframe.style.display = 'block';
+      button.classList.add('showing-iframe');
+    }
+  }
+} 

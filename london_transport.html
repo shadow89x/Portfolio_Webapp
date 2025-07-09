@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="London Transport API Pipeline to PowerBI - Real-time bus data analysis and visualization dashboard">
+    <meta name="keywords" content="london transport, bus api, powerbi, data pipeline, real-time data, transportation analytics">
+    <meta name="author" content="Sanghoon Pai">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00f2ff">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shadow89x.github.io/optical_warehouse_web/london_transport.html">
+    <meta property="og:title" content="London Transport API Pipeline to PowerBI">
+    <meta property="og:description" content="Real-time bus data analysis and visualization dashboard using London Transport API and PowerBI">
+    <meta property="og:image" content="https://shadow89x.github.io/optical_warehouse_web/sample/images/KakaoTalk_20220610_132225838.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://shadow89x.github.io/optical_warehouse_web/london_transport.html">
+    <meta property="twitter:title" content="London Transport API Pipeline to PowerBI">
+    <meta property="twitter:description" content="Real-time bus data analysis and visualization dashboard using London Transport API and PowerBI">
+    <meta property="twitter:image" content="https://shadow89x.github.io/optical_warehouse_web/sample/images/KakaoTalk_20220610_132225838.jpg">
+    
+    <title>London Transport API Pipeline to PowerBI | Sanghoon Pai's Portfolio</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sanghoon Portfolio">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --color-background: #0a0a0a;
+            --color-surface: #1a1a1a;
+            --color-surface-elevated: #2a2a2a;
+            --color-surface-hover: #3a3a3a;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #cccccc;
+            --color-text-tertiary: #999999;
+            --color-border: #333333;
+            --color-border-focus: #3b82f6;
+            --color-shadow: rgba(0, 0, 0, 0.3);
+            --color-shadow-elevated: rgba(0, 0, 0, 0.4);
+            --font-family-sans: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-family-orbitron: 'Orbitron', 'Poppins', sans-serif;
+        }
+
+        /* Reset and Base Styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family-sans);
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background: radial-gradient(ellipse at 50% 0%, #2a003f 0%, #18181b 60%, #0a0a1a 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Fixed Sidebar */
+        .fixed-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 0 15px 15px 0;
+            box-shadow: 
+                0 0 20px rgba(102, 126, 234, 0.6),
+                0 0 40px rgba(102, 126, 234, 0.3),
+                0 0 60px rgba(102, 126, 234, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar-link {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            text-shadow: 0 0 4px #00f2ff, 0 0 1px #fff;
+            white-space: nowrap;
+        }
+
+        .sidebar-link:hover, .sidebar-link:focus {
+            background: linear-gradient(90deg, #00f2ff44 0%, #ff00e644 100%);
+            color: #00f2ff;
+            box-shadow: 0 0 16px #00f2ffcc, 0 2px 8px #ff00e6cc;
+        }
+
+        .sidebar-link.active {
+            background: linear-gradient(90deg, #00f2ff44 0%, #ff00e644 100%);
+            color: #00f2ff;
+            box-shadow: 0 0 16px #00f2ffcc, 0 2px 8px #ff00e6cc;
+        }
+
+        /* Neon EXP Bar Fixed */
+        .neon-exp-bar-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 1000;
+            background: rgba(10,10,20,0.85);
+            box-shadow: 0 2px 24px #00f2ff44, 0 0 0 2px #00f2ff55 inset;
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
+        }
+
+        .exp-bar-content {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+        }
+
+        .exp-level {
+            color: #00f2ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px #00f2ff, 0 0 2px #fff;
+        }
+
+        .exp-bar-outer {
+            width: 240px;
+            height: 18px;
+            background: #181c2a;
+            border-radius: 12px;
+            box-shadow: 0 0 12px #00f2ff55, 0 0 0 2px #00f2ff44 inset;
+            overflow: hidden;
+            margin: 0 0.5rem;
+        }
+
+        .exp-bar-inner {
+            height: 100%;
+            background: linear-gradient(90deg, #00f2ff 0%, #00ffb3 100%);
+            box-shadow: 0 0 16px #00f2ffcc, 0 0 8px #00ffb3cc;
+            border-radius: 12px 0 0 12px;
+            transition: width 0.6s cubic-bezier(.4,2,.6,1);
+        }
+
+        .exp-value {
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 0 6px #00f2ff, 0 0 2px #fff;
+        }
+
+        .stats-display {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            color: #00ffb3;
+            text-shadow: 0 0 4px #00ffb3, 0 0 1px #fff;
+            font-weight: 600;
+        }
+
+        /* Main Layout */
+        .main-content {
+            margin-left: 140px;
+            padding-top: 80px;
+            min-height: 100vh;
+            background: var(--color-background);
+        }
+
+        /* London Transport Container */
+        .london-transport-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .london-transport-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00f2ff;
+            text-shadow: 0 0 20px #00f2ff, 0 0 5px #fff;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .london-transport-subtitle {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: #00ffb3;
+            text-shadow: 0 0 10px #00ffb3, 0 0 2px #fff;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Project Description */
+        .project-description {
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 0 32px #00f2ff88, 0 2px 16px #000b;
+        }
+
+        .description-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: #00f2ff;
+            text-shadow: 0 0 10px #00f2ff, 0 0 2px #fff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .description-text {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(90deg, #00f2ff33 0%, #ff00e633 100%);
+            border: 1px solid #00f2ff;
+            border-radius: 2rem;
+            padding: 0.5rem 1.5rem;
+            color: #00f2ff;
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-shadow: 0 0 4px #00f2ff;
+        }
+
+        /* PowerBI Dashboard */
+        .dashboard-section {
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 2px solid #00ffb3;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 0 32px #00ffb388, 0 2px 16px #000b;
+        }
+
+        .dashboard-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: #00ffb3;
+            text-shadow: 0 0 12px #00ffb3, 0 0 3px #fff;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .powerbi-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 2px solid #00ffb3;
+            box-shadow: 0 0 20px #00ffb344;
+        }
+
+        .powerbi-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #fff;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #18181b 60%, #23272f 100%);
+            border: 2px solid #00f2ff;
+            border-radius: 1.2rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 16px #00f2ff44, 0 2px 8px #000b;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 0 48px #00f2ffcc, 0 4px 32px #00ffb3cc, 0 2px 16px #000b;
+            border-color: #00ffb3;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: #00f2ff;
+            text-shadow: 0 0 8px #00f2ff, 0 0 2px #fff;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-description {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #ffffff;
+            line-height: 1.6;
+            text-shadow: 0 0 2px #00f2ff, 0 0 1px #000;
+        }
+
+        /* EXP Float Animation */
+        #exp-float-container {
+            position: fixed;
+            top: 56px;
+            right: 32px;
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .exp-float {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #00ffb3;
+            text-shadow: 0 0 12px #00f2ff, 0 0 2px #fff;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(0);
+            animation: exp-float-anim 1.2s cubic-bezier(.4,2,.6,1) forwards;
+        }
+
+        @keyframes exp-float-anim {
+            0% { opacity: 0; transform: translateY(0) scale(0.8); }
+            10% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+            60% { opacity: 1; transform: translateY(-32px) scale(1); }
+            100% { opacity: 0; transform: translateY(-48px) scale(0.9); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .fixed-sidebar {
+                width: 80px;
+            }
+            
+            .main-content {
+                margin-left: 100px;
+                padding-top: 100px;
+            }
+            
+            .london-transport-container {
+                padding: 1rem;
+            }
+            
+            .london-transport-title {
+                font-size: 2rem;
+            }
+            
+            .london-transport-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .powerbi-container {
+                height: 400px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Light Theme Styles */
+        body.light-theme {
+            background: radial-gradient(ellipse at 50% 0%, #e0e7ff 0%, #f8fafc 60%, #f1f5f9 100%);
+            color: #1e293b;
+        }
+        
+        body.light-theme .project-description,
+        body.light-theme .dashboard-section,
+        body.light-theme .feature-card {
+            background: linear-gradient(135deg, #ffffff 60%, #f8fafc 100%);
+            border-color: #3b82f6;
+            color: #1e293b;
+        }
+        
+        body.light-theme .london-transport-title {
+            color: #3b82f6;
+            text-shadow: 0 0 20px #3b82f6, 0 0 5px #fff;
+        }
+        
+        body.light-theme .description-title,
+        body.light-theme .dashboard-title,
+        body.light-theme .feature-title {
+            color: #3b82f6;
+            text-shadow: 0 0 8px #3b82f6;
+        }
+        
+        body.light-theme .description-text,
+        body.light-theme .feature-description {
+            color: #1e293b;
+            text-shadow: none;
+        }
+        
+        /* Theme toggle button styles */
+        #theme-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Sidebar -->
+    <nav class="fixed-sidebar">
+              <ul class="sidebar-links">
+            <li><a href="/index.html" class="sidebar-link">Main</a></li>
+            <li><a href="/vector_search.html" class="sidebar-link">Vector Search</a></li>
+            <li><a href="/london_transport.html" class="sidebar-link active">London Transport</a></li>
+            <li><a href="#" class="sidebar-link" data-page="zoho-email">Zoho Email</a></li>
+            <li><a href="#" class="sidebar-link" data-page="ai-background">AI Background</a></li>
+            <li><a href="#" class="sidebar-link" data-page="healthcare-clustering">Healthcare</a></li>
+            <li><a href="#" class="sidebar-link" data-page="amazon-review">Amazon Review</a></li>
+            <li><a href="#" class="sidebar-link" data-page="azure-compendium">Azure Guide</a></li>
+            <li><button id="theme-toggle" class="sidebar-link" style="background: none; border: none; cursor: pointer; font-family: inherit; color: inherit;">🌙</button></li>
+        </ul>
+    </nav>
+    
+    <!-- EXP Bar -->
+    <div id="exp-bar-fixed" class="neon-exp-bar-fixed">
+        <div class="exp-bar-content">
+            <span class="exp-level">Lv. <span id="exp-level">1</span></span>
+            <div class="exp-bar-outer">
+                <div class="exp-bar-inner" id="exp-bar-inner" style="width:0%"></div>
+            </div>
+            <span class="exp-value"><span id="exp-now">0</span> / <span id="exp-max">100</span> EXP</span>
+            <div class="stats-display">
+                <span class="stat-item">HP: <span id="stat-hp">100</span></span>
+                <span class="stat-item">MP: <span id="stat-mp">50</span></span>
+                <span class="stat-item">STR: <span id="stat-str">10</span></span>
+                <span class="stat-item">DEX: <span id="stat-dex">8</span></span>
+                <span class="stat-item">INT: <span id="stat-int">12</span></span>
+                <span class="stat-item">CHA: <span id="stat-cha">9</span></span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- EXP 획득 애니메이션 표시용 -->
+    <div id="exp-float-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="london-transport-container">
+            <h1 class="london-transport-title">🚌 London Transport API Pipeline</h1>
+            <p class="london-transport-subtitle">Real-time Bus Data Analysis & PowerBI Dashboard</p>
+            
+            <!-- Project Description -->
+            <section class="project-description">
+                <h2 class="description-title">Project Overview</h2>
+                <p class="description-text">
+                    This project demonstrates a comprehensive data pipeline that collects real-time bus data from London Transport API 
+                    and transforms it into actionable insights through PowerBI dashboards. The system provides live monitoring of bus 
+                    locations, arrival times, and route performance across London's extensive transportation network.
+                </p>
+                <p class="description-text">
+                    The pipeline includes automated data collection, real-time processing, and interactive visualizations that help 
+                    transportation planners and commuters make informed decisions about bus routes and schedules.
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PowerBI</span>
+                    <span class="tech-tag">London Transport API</span>
+                    <span class="tech-tag">Data Pipeline</span>
+                    <span class="tech-tag">Real-time Analytics</span>
+                    <span class="tech-tag">Transportation Data</span>
+                </div>
+            </section>
+            
+            <!-- PowerBI Dashboard -->
+            <section class="dashboard-section">
+                <h2 class="dashboard-title">📊 Live PowerBI Dashboard</h2>
+                <div class="powerbi-container">
+                    <iframe class="powerbi-iframe" 
+                            title="London Transport Dashboard" 
+                            src="https://app.powerbi.com/view?r=eyJrIjoiMWY2ZWE3MDItOWZkMi00YmM3LTk4ZTctNmU1MzExMDcxZDdhIiwidCI6IjEyYWZkYjRmLWNmY2EtNDgyNS04ZGY4LThiNzEzOTZiOGY3YyIsImMiOjZ9" 
+                            frameborder="0" 
+                            allowFullScreen="true">
+                    </iframe>
+                </div>
+            </section>
+            
+            <!-- Features Grid -->
+            <div class="features-grid">
+                <div class="feature-card" onclick="gainExp(15)">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Real-time Data Collection</h3>
+                    <p class="feature-description">
+                        Automated API calls to London Transport API to collect live bus location data, 
+                        arrival times, and route information every few minutes.
+                    </p>
+                </div>
+                
+                <div class="feature-card" onclick="gainExp(15)">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Live Processing</h3>
+                    <p class="feature-description">
+                        Real-time data transformation and cleaning using Python scripts, 
+                        ensuring data quality and consistency for analysis.
+                    </p>
+                </div>
+                
+                <div class="feature-card" onclick="gainExp(15)">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Interactive Dashboards</h3>
+                    <p class="feature-description">
+                        Dynamic PowerBI dashboards with live data refresh, 
+                        interactive maps, and performance metrics for transportation analysis.
+                    </p>
+                </div>
+                
+                <div class="feature-card" onclick="gainExp(15)">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Route Optimization</h3>
+                    <p class="feature-description">
+                        Analysis of bus route efficiency, identifying bottlenecks and 
+                        opportunities for route optimization and service improvements.
+                    </p>
+                </div>
+                
+                <div class="feature-card" onclick="gainExp(15)">
+                    <div class="feature-icon">⏰</div>
+                    <h3 class="feature-title">Arrival Predictions</h3>
+                    <p class="feature-description">
+                        Real-time arrival time predictions based on current bus locations 
+                        and historical performance data for better commuter planning.
+                    </p>
+                </div>
+                
+                <div class="feature-card" onclick="gainExp(15)">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Performance Analytics</h3>
+                    <p class="feature-description">
+                        Comprehensive analytics on bus performance, including on-time rates, 
+                        passenger capacity, and service reliability metrics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // EXP System with Local Storage
+        class GameSystem {
+            constructor() {
+                this.currentLevel = parseInt(localStorage.getItem('currentLevel')) || 1;
+                this.currentExp = parseInt(localStorage.getItem('currentExp')) || 0;
+                this.maxExp = parseInt(localStorage.getItem('maxExp')) || 100;
+                this.totalExp = parseInt(localStorage.getItem('totalExp')) || 0;
+                
+                this.playerStats = {
+                    hp: parseInt(localStorage.getItem('playerHp')) || 100,
+                    mp: parseInt(localStorage.getItem('playerMp')) || 50,
+                    str: parseInt(localStorage.getItem('playerStr')) || 10,
+                    dex: parseInt(localStorage.getItem('playerDex')) || 8,
+                    int: parseInt(localStorage.getItem('playerInt')) || 12,
+                    cha: parseInt(localStorage.getItem('playerCha')) || 9
+                };
+                
+                this.achievements = JSON.parse(localStorage.getItem('achievements')) || [];
+                this.lastScrollY = 0;
+                this.isInitialized = false;
+                
+                this.init();
+            }
+            
+            init() {
+                this.updateExpDisplay();
+                this.updateStatsDisplay();
+                this.setupEventListeners();
+                this.checkAchievements();
+                this.isInitialized = true;
+                
+                // Starting bonus only on first visit
+                if (!localStorage.getItem('hasVisitedLondon')) {
+                    this.gainExp(20);
+                    localStorage.setItem('hasVisitedLondon', 'true');
+                }
+            }
+            
+            saveToStorage() {
+                localStorage.setItem('currentLevel', this.currentLevel);
+                localStorage.setItem('currentExp', this.currentExp);
+                localStorage.setItem('maxExp', this.maxExp);
+                localStorage.setItem('totalExp', this.totalExp);
+                localStorage.setItem('playerHp', this.playerStats.hp);
+                localStorage.setItem('playerMp', this.playerStats.mp);
+                localStorage.setItem('playerStr', this.playerStats.str);
+                localStorage.setItem('playerDex', this.playerStats.dex);
+                localStorage.setItem('playerInt', this.playerStats.int);
+                localStorage.setItem('playerCha', this.playerStats.cha);
+                localStorage.setItem('achievements', JSON.stringify(this.achievements));
+            }
+            
+            updateExpDisplay() {
+                const expPercentage = (this.currentExp / this.maxExp) * 100;
+                const expLevelEl = document.getElementById('exp-level');
+                const expNowEl = document.getElementById('exp-now');
+                const expMaxEl = document.getElementById('exp-max');
+                const expBarInnerEl = document.getElementById('exp-bar-inner');
+                
+                if (expLevelEl) expLevelEl.textContent = this.currentLevel;
+                if (expNowEl) expNowEl.textContent = this.currentExp;
+                if (expMaxEl) expMaxEl.textContent = this.maxExp;
+                if (expBarInnerEl) expBarInnerEl.style.width = expPercentage + '%';
+            }
+            
+            updateStatsDisplay() {
+                const statElements = {
+                    'stat-hp': this.playerStats.hp,
+                    'stat-mp': this.playerStats.mp,
+                    'stat-str': this.playerStats.str,
+                    'stat-dex': this.playerStats.dex,
+                    'stat-int': this.playerStats.int,
+                    'stat-cha': this.playerStats.cha
+                };
+                
+                Object.entries(statElements).forEach(([id, value]) => {
+                    const element = document.getElementById(id);
+                    if (element) element.textContent = value;
+                });
+            }
+            
+            levelUp() {
+                this.currentLevel++;
+                this.maxExp = Math.floor(this.maxExp * 1.2);
+                
+                // 스탯 증가량 계산
+                const gains = {
+                    hp: Math.floor(Math.random() * 5) + 5,
+                    mp: Math.floor(Math.random() * 3) + 3,
+                    str: Math.floor(Math.random() * 2) + 1,
+                    dex: Math.floor(Math.random() * 2) + 1,
+                    int: Math.floor(Math.random() * 2) + 1,
+                    cha: Math.floor(Math.random() * 2) + 1
+                };
+                
+                // 스탯 적용
+                Object.entries(gains).forEach(([stat, gain]) => {
+                    this.playerStats[stat] += gain;
+                });
+                
+                this.showLevelUpScreen(gains);
+                this.updateExpDisplay();
+                this.updateStatsDisplay();
+                this.saveToStorage();
+                this.checkAchievements();
+            }
+            
+            gainExp(amount) {
+                this.currentExp += amount;
+                this.totalExp += amount;
+                this.showExpFloat('+' + amount + ' EXP!');
+                
+                if (this.currentExp >= this.maxExp) {
+                    this.currentExp = this.currentExp - this.maxExp;
+                    this.levelUp();
+                } else {
+                    this.updateExpDisplay();
+                }
+                
+                this.saveToStorage();
+            }
+            
+            showExpFloat(text) {
+                const container = document.getElementById('exp-float-container');
+                if (!container) return;
+                
+                const floatElement = document.createElement('div');
+                floatElement.className = 'exp-float';
+                floatElement.textContent = text;
+                
+                container.appendChild(floatElement);
+                setTimeout(() => {
+                    if (floatElement.parentNode) {
+                        floatElement.remove();
+                    }
+                }, 1200);
+            }
+            
+            showLevelUpScreen(gains) {
+                const levelUpScreen = document.createElement('div');
+                levelUpScreen.className = 'levelup-screen';
+                levelUpScreen.style.cssText = 'position: fixed; top: 60px; right: 20px; width: 350px; z-index: 3000; pointer-events: none;';
+                levelUpScreen.innerHTML = `
+                    <div style="background: linear-gradient(135deg, #18181b 60%, #23272f 100%); border: 3px solid #ffe066; border-radius: 1.5rem; padding: 2rem; text-align: center; box-shadow: 0 0 48px #ffe066cc, 0 0 24px #ff00e6cc; transform: translateX(100%); animation: levelup-slide-in 0.5s ease-out forwards;">
+                        <div style="font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 2rem; font-weight: 900; color: #ffe066; text-shadow: 0 0 24px #ffe066, 0 0 8px #fff; margin-bottom: 0.5rem; letter-spacing: 0.1em;">LEVEL UP!</div>
+                        <div style="font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 1.2rem; color: #00f2ff; text-shadow: 0 0 12px #00f2ff, 0 0 4px #fff; margin-bottom: 1rem;">Reached Level ${this.currentLevel}!</div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem;">
+                            <div style="background: rgba(0, 242, 255, 0.1); border: 1px solid #00f2ff; border-radius: 0.3rem; padding: 0.3rem; font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 0.8rem; color: #00ffb3; text-shadow: 0 0 4px #00ffb3;">HP +${gains.hp}</div>
+                            <div style="background: rgba(0, 242, 255, 0.1); border: 1px solid #00f2ff; border-radius: 0.3rem; padding: 0.3rem; font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 0.8rem; color: #00ffb3; text-shadow: 0 0 4px #00ffb3;">MP +${gains.mp}</div>
+                            <div style="background: rgba(0, 242, 255, 0.1); border: 1px solid #00f2ff; border-radius: 0.3rem; padding: 0.3rem; font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 0.8rem; color: #00ffb3; text-shadow: 0 0 4px #00ffb3;">STR +${gains.str}</div>
+                            <div style="background: rgba(0, 242, 255, 0.1); border: 1px solid #00f2ff; border-radius: 0.3rem; padding: 0.3rem; font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 0.8rem; color: #00ffb3; text-shadow: 0 0 4px #00ffb3;">DEX +${gains.dex}</div>
+                            <div style="background: rgba(0, 242, 255, 0.1); border: 1px solid #00f2ff; border-radius: 0.3rem; padding: 0.3rem; font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 0.8rem; color: #00ffb3; text-shadow: 0 0 4px #00ffb3;">INT +${gains.int}</div>
+                            <div style="background: rgba(0, 242, 255, 0.1); border: 1px solid #00f2ff; border-radius: 0.3rem; padding: 0.3rem; font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 0.8rem; color: #00ffb3; text-shadow: 0 0 4px #00ffb3;">CHA +${gains.cha}</div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(levelUpScreen);
+                
+                setTimeout(() => {
+                    if (levelUpScreen.parentNode) {
+                        levelUpScreen.remove();
+                    }
+                }, 3000);
+            }
+            
+            checkAchievements() {
+                const newAchievements = [];
+                
+                // 레벨 업 업적
+                if (this.currentLevel >= 5 && !this.achievements.includes('level5')) {
+                    newAchievements.push({ id: 'level5', title: 'Rising Star', description: 'Reached Level 5!', exp: 50 });
+                }
+                if (this.currentLevel >= 10 && !this.achievements.includes('level10')) {
+                    newAchievements.push({ id: 'level10', title: 'Veteran', description: 'Reached Level 10!', exp: 100 });
+                }
+                if (this.currentLevel >= 20 && !this.achievements.includes('level20')) {
+                    newAchievements.push({ id: 'level20', title: 'Master', description: 'Reached Level 20!', exp: 200 });
+                }
+                
+                // 총 경험치 업적
+                if (this.totalExp >= 1000 && !this.achievements.includes('exp1000')) {
+                    newAchievements.push({ id: 'exp1000', title: 'Experience Hunter', description: 'Gained 1000 total EXP!', exp: 75 });
+                }
+                
+                // 새로운 업적이 있으면 표시
+                newAchievements.forEach(achievement => {
+                    this.achievements.push(achievement.id);
+                    this.showAchievement(achievement);
+                    this.gainExp(achievement.exp);
+                });
+            }
+            
+            showAchievement(achievement) {
+                const achievementScreen = document.createElement('div');
+                achievementScreen.style.cssText = 'position: fixed; top: 120px; right: 20px; width: 350px; z-index: 3000; pointer-events: none;';
+                achievementScreen.innerHTML = `
+                    <div style="background: linear-gradient(135deg, #18181b 60%, #23272f 100%); border: 3px solid #ffd700; border-radius: 1.5rem; padding: 2rem; text-align: center; box-shadow: 0 0 48px #ffd700cc, 0 0 24px #ff00e6cc; transform: translateX(100%); animation: levelup-slide-in 0.5s ease-out forwards;">
+                        <div style="font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 2rem; font-weight: 900; color: #ffd700; text-shadow: 0 0 24px #ffd700, 0 0 8px #fff; margin-bottom: 0.5rem; letter-spacing: 0.1em;">🏆 ACHIEVEMENT!</div>
+                        <div style="font-family: \'Orbitron\', \'Poppins\', sans-serif; font-size: 1.2rem; color: #00f2ff; text-shadow: 0 0 12px #00f2ff, 0 0 4px #fff; margin-bottom: 1rem;">${achievement.title}</div>
+                        <div style="color: #fff; margin: 1rem 0; font-family: \'Orbitron\', \'Poppins\', sans-serif;">${achievement.description}</div>
+                        <div style="color: #00ffb3; font-weight: bold; font-family: \'Orbitron\', \'Poppins\', sans-serif;">+${achievement.exp} EXP</div>
+                    </div>
+                `;
+                
+                document.body.appendChild(achievementScreen);
+                
+                setTimeout(() => {
+                    if (achievementScreen.parentNode) {
+                        achievementScreen.remove();
+                    }
+                }, 4000);
+            }
+            
+            setupEventListeners() {
+                // 스크롤 시 경험치 +4 (100px마다)
+                window.addEventListener('scroll', () => {
+                    const now = Math.floor(window.scrollY/100);
+                    if(now !== this.lastScrollY) {
+                        this.gainExp(4);
+                        this.lastScrollY = now;
+                    }
+                });
+
+                // 클릭 시 경험치 +5
+                window.addEventListener('click', (e) => {
+                    this.gainExp(5);
+                });
+                
+                // 키보드 네비게이션
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        const focusedElement = document.activeElement;
+                        if (focusedElement && focusedElement.classList.contains('feature-card')) {
+                            this.gainExp(15);
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Theme Management System
+        class ThemeManager {
+            constructor() {
+                this.themeToggle = document.getElementById('theme-toggle');
+                this.currentTheme = localStorage.getItem('theme') || 'dark';
+                
+                this.init();
+            }
+            
+            init() {
+                this.applyTheme(this.currentTheme);
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                if (this.themeToggle) {
+                    this.themeToggle.addEventListener('click', () => this.toggleTheme());
+                }
+            }
+            
+            toggleTheme() {
+                const newTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+                this.applyTheme(newTheme);
+                this.currentTheme = newTheme;
+                localStorage.setItem('theme', newTheme);
+            }
+            
+            applyTheme(theme) {
+                const body = document.body;
+                const toggleButton = this.themeToggle;
+                
+                if (theme === 'light') {
+                    body.classList.add('light-theme');
+                    if (toggleButton) toggleButton.textContent = '🌙';
+                } else {
+                    body.classList.remove('light-theme');
+                    if (toggleButton) toggleButton.textContent = '☀️';
+                }
+            }
+        }
+        
+        // Initialize systems
+        let gameSystem;
+        document.addEventListener('DOMContentLoaded', () => {
+            gameSystem = new GameSystem();
+            new ThemeManager();
+        });
+        
+        // Global function for feature card clicks
+        function gainExp(amount) {
+            if (gameSystem) {
+                gameSystem.gainExp(amount);
+            }
+        }
+        
+        // Add levelup animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes levelup-slide-in {
+                0% { transform: translateX(100%); }
+                100% { transform: translateX(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html> 

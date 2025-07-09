@@ -26,13 +26,15 @@ This is a comprehensive personal portfolio website designed to showcase web deve
 - **GitHub Pages**: Deployment platform
 
 ### Current Features
-- **GitHub API Integration**: Real-time repository data and statistics
-- **PowerBI Dashboard**: Interactive analytics dashboard with data visualization
+- **Interactive Gaming UI**: Neon-themed gaming-inspired interface with EXP system
 - **Vector Search**: AI-powered image and text similarity search using Azure Computer Vision
+- **Project Search & Filter**: Real-time search and category filtering for portfolio projects
+- **Achievement System**: Unlockable achievements with EXP rewards
+- **PWA Support**: Progressive Web App with offline capabilities
+- **Theme System**: Dark/Light mode toggle with persistent preferences
 - **Responsive Design**: Mobile-first approach with modern CSS
-- **Theme System**: Dark/Light mode with automatic detection
-- **Contact Form**: Interactive form with validation and submission
 - **Performance Optimization**: Lazy loading, caching, and optimized assets
+- **Accessibility**: ARIA labels, keyboard navigation, and screen reader support
 
 ### Future Additions
 - **React**: For complex component management
@@ -123,6 +125,26 @@ optical_warehouse_web/
 - [ ] Cross-browser compatibility
 - [ ] Deployment configuration
 
+## 🎮 Interactive Gaming Features
+
+### EXP System
+- **Level Progression**: Gain EXP through various interactions (scrolling, clicking, searching)
+- **Stat Increases**: Random stat gains (HP, MP, STR, DEX, INT, CHA) on level up
+- **Persistent Progress**: All progress saved in localStorage
+- **Visual Feedback**: Animated EXP gain notifications and level-up screens
+
+### Achievement System
+- **Unlockable Achievements**: Reach milestones to unlock achievements
+- **EXP Rewards**: Earn bonus EXP for completing achievements
+- **Visual Notifications**: Animated achievement popups with rewards
+- **Progress Tracking**: Automatic achievement checking and unlocking
+
+### Project Search & Filter
+- **Real-time Search**: Instant filtering as you type
+- **Category Filtering**: Filter by AI/ML, Automation, Data Analysis, Web Development
+- **Tag-based Search**: Search through project tags and descriptions
+- **Results Counter**: Shows number of filtered results
+
 ## 🔍 Vector Search Feature
 
 ### Overview
@@ -133,73 +155,72 @@ The Vector Search feature is an AI-powered similarity search system that allows 
 - **Image Search**: Provide image URLs to find visually similar products
 - **Real-time Results**: Instant search results with similarity scores
 - **Fallback Mode**: Works offline with sample data when API is unavailable
+- **EXP Integration**: Gain EXP for successful searches
 
 ### Technical Implementation
 - **Frontend**: Pure HTML/CSS/JavaScript with modern UI design
-- **Backend**: Flask API with CORS support
 - **AI Service**: Azure Computer Vision API for vectorization
 - **Similarity Algorithm**: Cosine similarity for vector comparison
+- **Local Storage**: Persistent Azure credentials and search history
 
 ### Setup Instructions
-1. **Install Python dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. **Configure Azure credentials** (optional):
+   Enter your Azure Computer Vision credentials in the web interface:
+   - Azure Endpoint: `https://your-resource-name.cognitiveservices.azure.com`
+   - Azure API Key: Your subscription key
 
-2. **Configure Azure credentials** (optional):
-   Create a `.env` file with your Azure Computer Vision credentials:
-   ```
-   AZURE_ENDPOINT=https://your-resource-name.cognitiveservices.azure.com
-   AZURE_API_KEY=your-azure-api-key-here
-   ```
-
-3. **Start the Streamlit app**:
-   ```bash
-   python run_streamlit.py
-   ```
-   Or manually:
-   ```bash
-   streamlit run streamlit_app.py --server.port 8501
-   ```
-
-4. **Access the feature**:
+2. **Access the feature**:
    Navigate to the Vector Search page via the sidebar link
-   The Streamlit app will be embedded in an iframe within the page
-
-### Streamlit Integration
-- **Iframe Embedding**: Streamlit app is embedded directly in the webpage
-- **Seamless Experience**: Users can search without leaving the main website
-- **Fallback Support**: Shows helpful error message if Streamlit app is not running
-- **Real-time Communication**: JavaScript and Streamlit can communicate via postMessage
+   Enter text or image URLs to search for similar products
 
 ### Security Notes
-- Azure credentials are stored in `.env` file (not committed to Git)
+- Azure credentials are stored in browser localStorage
 - API includes error handling and fallback mechanisms
-- CORS is enabled for local development
+- No server-side storage of sensitive data
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- Python 3.8+ (for Vector Search API)
-- Git
-- Modern web browser
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Git (for development)
+- Node.js (v16 or higher, for development)
 
 ### Installation
 ```bash
 # Clone the repository
-git clone [repository-url]
+git clone https://github.com/shadow89x/optical_warehouse_web.git
 cd optical_warehouse_web
 
-# Install dependencies
+# For development (optional)
 npm install
-
-# Start development server
 npm run dev
 
-# Build for production
-npm run build
+# For production
+# Simply open index.html in a web browser
+# Or deploy to GitHub Pages, Netlify, or any static hosting service
 ```
+
+### Quick Start
+1. Open `index.html` in your web browser
+2. Explore the interactive gaming interface
+3. Try the Vector Search feature
+4. Use the theme toggle (🌙/☀️) in the sidebar
+5. Search and filter projects
+6. Gain EXP through various interactions
+
+## 🆕 Recent Updates
+
+### Version 2.0 - Major Improvements
+- **Enhanced EXP System**: Persistent progress with localStorage
+- **Achievement System**: Unlockable achievements with rewards
+- **Project Search**: Real-time search and filtering
+- **Theme Toggle**: Dark/Light mode with persistent preferences
+- **PWA Support**: Progressive Web App capabilities
+- **Accessibility**: ARIA labels, keyboard navigation, screen reader support
+- **Performance**: Lazy loading, optimized images, better caching
+- **SEO**: Improved meta tags, Open Graph, Twitter Cards
+- **Mobile Optimization**: Better responsive design
+- **Error Handling**: Graceful fallbacks and user feedback
 
 ## 📚 Learning Resources
 
